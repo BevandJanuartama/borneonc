@@ -58,7 +58,7 @@
 <body class="bg-gray-50 text-gray-800">
 
   <!-- HEADER -->
-  <header id="mainHeader" class="fixed top-0 left-0 w-full z-50 bg-white shadow-md transition-all duration-300">
+  <header id="mainHeader" class="fixed top-0 left-0 w-full z-50 bg-white shadow transition-all duration-300">
     <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
       <h1 class="text-xl font-bold text-[#3F8EFC] flex items-center">
         <i class="ri-global-line mr-2"></i> BORNEO NETWORK CENTER
@@ -97,16 +97,24 @@
   <!-- HERO SECTION -->
   <section id="beranda" class="pt-32 pb-20 bg-white">
     <div class="container mx-auto px-6 lg:flex lg:items-center lg:gap-12">
-      <div class="lg:w-1/2 mb-10 lg:mb-0 fade-element">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-800 leading-tight">BILLING MIKROTIK <br> PPPoE DAN HOTSPOT</h1>
-        <h2 class="text-2xl md:text-3xl mb-6 text-gray-600">Aplikasi billing dan server radius yang powerfull</h2>
-        <div class="flex flex-wrap gap-4">
-          <a href="#harga" class="px-6 py-3 gradient-bg text-white rounded-lg font-medium hover:opacity-90 transition">Mulai Berlangganan</a>
-          <a href="#fitur" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-100 transition">Lihat Fitur</a>
+      <div class="lg:w-1/2 mb-10 lg:mb-0 fade-element text-center md:text-left">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-800 leading-tight">
+          BILLING MIKROTIK <br> PPPoE DAN HOTSPOT
+        </h1>
+        <h2 class="text-2xl md:text-3xl mb-6 text-gray-600">
+          Aplikasi billing dan server radius yang powerfull
+        </h2>
+        <div class="flex flex-col md:flex-row justify-center md:justify-start gap-4">
+          <a href="#harga" class="px-6 py-3 gradient-bg text-white rounded-lg font-medium hover:opacity-90 transition">
+            Mulai Berlangganan
+          </a>
+          <a href="#fitur" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-100 transition">
+            Lihat Fitur
+          </a>
         </div>
       </div>
       <div class="lg:w-1/2 fade-element">
-        <img src="assets/img/logotelkom.jpeg" class="w-full max-w-lg mx-auto rounded-xl shadow-lg" alt="logo rl radius">
+        <img src="assets/img/logotelkom.jpeg" class="w-full max-w-lg mx-auto rounded-xl shadow-lg" alt="logo bnc radius">
       </div>
     </div>
   </section>
@@ -141,7 +149,7 @@
             <i class="ri-database-2-fill text-3xl text-white"></i> <!-- Ganti dengan cloud untuk kesan data terpusat -->
           </div>
           <h3 class="text-xl font-bold mb-3 text-gray-800">Data Terpusat</h3>
-          <p class="text-gray-600">Satu Aplikasi untuk banyak MikroTik. Klien Anda dapat terhubung ke jaringan dengan 1 akun dari mana saja, asalkan router sudah tersambung ke server Cloud RL Radius.</p>
+          <p class="text-gray-600">Satu Aplikasi untuk banyak MikroTik. Klien Anda dapat terhubung ke jaringan dengan 1 akun dari mana saja, asalkan router sudah tersambung ke server Cloud BNC Radius.</p>
         </div>
       </div>
     </div>
@@ -155,7 +163,7 @@
           <i class="ri-customer-service-fill text-4xl text-white"></i>
         </div>
         <h3 class="text-2xl font-bold text-gray-800 mb-4">100% Gratis Support</h3>
-        <p class="text-gray-600">Pelanggan akan dilayani langsung oleh teknisi, yang sudah bertahun tahun berkecimpung di dunia jaringan internet dalam menangani berbagai macam permasalahan, support yang kami berikan bersifat gratis selama permasalahan berkaitan dengan aplikasi RL Radius</p>
+        <p class="text-gray-600">Pelanggan akan dilayani langsung oleh teknisi, yang sudah bertahun tahun berkecimpung di dunia jaringan internet dalam menangani berbagai macam permasalahan, support yang kami berikan bersifat gratis selama permasalahan berkaitan dengan aplikasi BNC Radius</p>
       </div>
     </div>
   </section>
@@ -170,7 +178,7 @@
 
       <div class="flex flex-wrap items-center">
         <div class="w-full xl:w-1/3 text-center xl:text-left -mt16 fade-element">
-  <img src="assets/img/svg/fitur.svg" class="mx-auto xl:mx-0 w-full max-w-[420px] p-2" alt="fitur billing mikrotik rl radius">
+  <img src="assets/img/svg/fitur.svg" class="mx-auto xl:mx-0 w-full max-w-[420px] p-2" alt="fitur billing mikrotik bnc radius">
 </div>
 
 
@@ -198,7 +206,7 @@
               </div>
             </div>
 
-            <!-- Fitur 3 -->
+            {{-- <!-- Fitur 3 -->
             <div class="flex items-start p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
               <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
                 <i class="ri-grid-fill text-xl text-white"></i>
@@ -218,7 +226,7 @@
                 <h4 class="font-semibold text-gray-800 mb-1">Tiket</h4>
                 <p class="text-gray-600 text-sm">Proses pemasangan dan support terpantau otomatis via WhatsApp.</p>
               </div>
-            </div>
+            </div> --}}
 
             <!-- Fitur 5 -->
             <div class="flex items-start p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
@@ -231,7 +239,7 @@
               </div>
             </div>
 
-            <!-- Fitur 6 -->
+            {{-- <!-- Fitur 6 -->
             <div class="flex items-start p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
               <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
                 <i class="ri-file-list-line text-xl text-white"></i>
@@ -262,7 +270,7 @@
                 <h4 class="font-semibold text-gray-800 mb-1">Transfer Bank Otomatis</h4>
                 <p class="text-gray-600 text-sm">Otomatisasi pelunasan tagihan ke rekening pribadi/perusahaan.</p>
               </div>
-            </div>
+            </div> --}}
 
             <!-- Fitur 9 -->
             <div class="flex items-start p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
@@ -275,7 +283,7 @@
               </div>
             </div>
 
-            <!-- Fitur 10 -->
+            {{-- <!-- Fitur 10 -->
             <div class="flex items-start p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
               <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
                 <i class="ri-whatsapp-line text-xl text-white"></i>
@@ -284,7 +292,7 @@
                 <h4 class="font-semibold text-gray-800 mb-1">WhatsApp Gateway</h4>
                 <p class="text-gray-600 text-sm">Notifikasi otomatis via WhatsApp dari RLRadius atau nomor sendiri.</p>
               </div>
-            </div>
+            </div> --}}
 
             <!-- Fitur 11 -->
             <div class="flex items-start p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
@@ -308,7 +316,7 @@
               </div>
             </div>
 
-            <!-- Fitur 13 -->
+            {{-- <!-- Fitur 13 -->
             <div class="flex items-start p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
               <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
                 <i class="ri-bank-card-2-line text-xl text-white"></i>
@@ -350,7 +358,7 @@
                 <h4 class="font-semibold text-gray-800 mb-1">Map Pelanggan</h4>
                 <p class="text-gray-600 text-sm">Peta pelanggan dengan status online/offline berbasis Google Maps.</p>
               </div>
-            </div>
+            </div> --}}
           </div>
         </div>
       </div>
@@ -366,24 +374,24 @@
       </header>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-[#e0f2ff] p-8 rounded-xl shadow-sm card-hover transition-all duration-300 fade-element">
-          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+        <div class="bg-[#e0f2ff] p-8 rounded-xl shadow-sm card-hover transition-all duration-300 fade-element text-center">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto">
             <i class="ri-server-fill text-3xl text-[#007BFF]"></i>
           </div>
           <h3 class="font-semibold text-xl mb-3 text-gray-800">VPN Server</h3>
           <p class="text-gray-600">Kami menyediakan banyak server VPN yang sudah saling terkoneksi satu sama lainnya, untuk menghubungkan router pelanggan ke server utama di datacenter, server VPN pilihan dengan latency dan rute terbaik.</p>
         </div>
 
-        <div class="bg-[#fff2e0] p-8 rounded-xl shadow-sm card-hover transition-all duration-300 fade-element">
-          <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6">
+        <div class="bg-[#fff2e0] p-8 rounded-xl shadow-sm card-hover transition-all duration-300 fade-element text-center">
+          <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto">
             <i class="ri-database-fill text-3xl text-[#FF5733]"></i>
           </div>
           <h3 class="font-semibold text-xl mb-3 text-gray-800">Server Handal</h3>
           <p class="text-gray-600">Kami memiliki server sendiri yang belokasi di Data Center Indonesia, dengan spesifikasi yang handal dan mumpuni, didukung dengan koneksi yang stabil serta sistem keamanan yang terpercaya.</p>
         </div>
 
-        <div class="bg-[#e0ffe0] p-8 rounded-xl shadow-sm card-hover transition-all duration-300 fade-element">
-          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+        <div class="bg-[#e0ffe0] p-8 rounded-xl shadow-sm card-hover transition-all duration-300 fade-element text-center">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6 mx-auto">
             <i class="ri-install-fill text-3xl text-[#28a745]"></i>
           </div>
           <h3 class="font-semibold text-xl mb-3 text-gray-800">Backup Otomatis</h3>
@@ -411,7 +419,7 @@
             <ol class="text-sm text-red-700 space-y-1">
               <li>1. User Online lebih dari 10.000 tersedia paket Platinum yang dapat diorder dari halaman cloud manager.</li>
               <li>2. Langganan adalah klien PPPoE, DHCP dan Member Hotspot yang berlangganan bulanan dan memiliki sistem tagihan berkelanjutan.</li>
-              <li>3. User Online adalah batas maksimal klien yang bisa terhubung ke RL Radius dengan flag Radius (R) di Mikrotik, meliputi: PPPoE, DHCP dan Hotspot.</li>
+              <li>3. User Online adalah batas maksimal klien yang bisa terhubung ke BNC Radius dengan flag Radius (R) di Mikrotik, meliputi: PPPoE, DHCP dan Hotspot.</li>
               <li>4. Daftar harga dan ketentuan paket di bawah ini dapat berubah sewaktu-waktu tanpa pemberitahuan!</li>
             </ol>
           </div>
@@ -422,11 +430,11 @@
         <!-- Paket BASIC -->
         <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 fade-element">
           <div class="text-center">
-            <h3 class="text-xl font-bold text-gray-800 mb-2">RLCLOUD BASIC</h3>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">BNC CLOUD BASIC</h3>
             <div class="text-3xl font-bold text-[#3F8EFC] mb-4"><sup class="text-lg">Rp</sup>100.000<span class="text-lg font-normal"> / bln</span></div>
             <img src="assets/img/svg/cloud.svg" alt="Cloud Basic" class="mx-auto mb-6 w-40">
           </div>
-          <ul class="space-y-3 mb-6">
+          <ul class="space-y-3 mb-6 flex flex-col items-center text-center">
             <li class="flex items-start">
               <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
               <span>2 Router MikroTik</span>
@@ -474,11 +482,11 @@
         <!-- Paket PREMIUM -->
         <div class="bg-white p-6 rounded-xl shadow-lg pricing-highlight fade-element">
           <div class="text-center">
-            <h3 class="text-xl font-bold text-[#3F8EFC] mb-2">RLCLOUD PREMIUM</h3>
+            <h3 class="text-xl font-bold text-[#3F8EFC] mb-2">BNC CLOUD PREMIUM</h3>
             <div class="text-3xl font-bold text-[#3F8EFC] mb-4"><sup class="text-lg">Rp</sup>290.000<span class="text-lg font-normal"> / bln</span></div>
             <img src="assets/img/svg/cloud.svg" alt="Cloud Premium" class="mx-auto mb-6 w-40">
           </div>
-          <ul class="space-y-3 mb-6">
+          <ul class="space-y-3 mb-6 flex flex-col items-center text-center">
             <li class="flex items-start">
               <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
               <span>10 Router MikroTik</span>
@@ -530,11 +538,11 @@
         <!-- Paket ULTIMATE -->
         <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 fade-element">
           <div class="text-center">
-            <h3 class="text-xl font-bold text-purple-600 mb-2">RLCLOUD ULTIMATE</h3>
+            <h3 class="text-xl font-bold text-purple-600 mb-2">BNC CLOUD ULTIMATE</h3>
             <div class="text-3xl font-bold text-purple-600 mb-4"><sup class="text-lg">Rp</sup>475.000<span class="text-lg font-normal"> / bln</span></div>
             <img src="assets/img/svg/cloud.svg" alt="Cloud Ultimate" class="mx-auto mb-6 w-40">
           </div>
-          <ul class="space-y-3 mb-6">
+          <ul class="space-y-3 mb-6 flex flex-col items-center text-center">
             <li class="flex items-start">
               <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
               <span>15 Router MikroTik</span>
@@ -636,7 +644,8 @@
   const header = document.getElementById('mainHeader');
   window.addEventListener("scroll", () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    header.style.transform = scrollTop > lastScrollTop && scrollTop > 80 ? "translateY(-100%)" : "translateY(0)";
+    //header.style.transform = scrollTop > lastScrollTop && scrollTop > 80 ? "translateY(-100%)" : "translateY(0)";
+    header.style.transform = "translateY(0)";
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
     
     // Show/hide back to top button
