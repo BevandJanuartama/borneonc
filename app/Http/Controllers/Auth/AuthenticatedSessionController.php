@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,14 +23,13 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
     }
 
-
     /**
      * Handle an incoming authentication request.
      */
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'email' => 'required|string|email',
+            'telepon' => 'required|string',
             'password' => 'required|string',
             'captcha' => ['required', 'digits:5', function ($attribute, $value, $fail) {
                 if ($value != session('captcha_login')) {
@@ -43,15 +41,23 @@ class AuthenticatedSessionController extends Controller
         // Hapus captcha dari session setelah dipakai
         session()->forget('captcha_login');
 
-        if (! Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
+        if (!Auth::attempt(['telepon' => $request->telepon, 'password' => $request->password], $request->boolean('remember'))) {
             throw ValidationException::withMessages([
-                'email' => __('These credentials do not match our records.'),
+                'telepon' => __('Nomor telepon atau password salah.'),
             ]);
         }
 
-    $request->session()->regenerate();
+        $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        // Ambil user yang sudah login
+        $user = Auth::user();
+
+        // Redirect berdasarkan level
+        if ($user->level === 'admin') {
+            return redirect()->intended(route('admin.dashboard'));
+        } else {
+            return redirect()->intended(route('user.instance'));
+        }
     }
 
     /**

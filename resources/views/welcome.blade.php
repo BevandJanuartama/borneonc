@@ -92,7 +92,7 @@
         <a href="{{ route('register') }}" class="block w-full text-center px-4 py-2 border border-[#3F8EFC] text-[#3F8EFC] rounded-lg hover:bg-blue-50 transition">Register</a>
       </div>
     </div>
-  </div>
+  </div> 
 
   <!-- HERO SECTION -->
   <section id="beranda" class="pt-32 pb-20 bg-white">
@@ -178,7 +178,7 @@
 
       <div class="flex flex-wrap items-center">
         <div class="w-full xl:w-1/3 text-center xl:text-left -mt16 fade-element">
-  <img src="assets/img/svg/fitur.svg" class="mx-auto xl:mx-0 w-full max-w-[420px] p-2" alt="fitur billing mikrotik bnc radius">
+  <img src="assets/img/svg/fitur.svg" class="mx-auto xl:mx-0 w-full max-w-[600px] p-2" alt="fitur billing mikrotik bnc radius">
 </div>
 
 
@@ -432,7 +432,7 @@
           <div class="text-center">
             <h3 class="text-xl font-bold text-gray-800 mb-2">BNC CLOUD BASIC</h3>
             <div class="text-3xl font-bold text-[#3F8EFC] mb-4"><sup class="text-lg">Rp</sup>100.000<span class="text-lg font-normal"> / bln</span></div>
-            <img src="assets/img/svg/cloud.svg" alt="Cloud Basic" class="mx-auto mb-6 w-40">
+            <img src="assets/img/cloud-server.png" alt="Cloud Basic" class="mx-auto mb-6 w-32">
           </div>
           <ul class="space-y-3 mb-6 flex flex-col items-center text-center">
             <li class="flex items-start">
@@ -484,7 +484,7 @@
           <div class="text-center">
             <h3 class="text-xl font-bold text-[#3F8EFC] mb-2">BNC CLOUD PREMIUM</h3>
             <div class="text-3xl font-bold text-[#3F8EFC] mb-4"><sup class="text-lg">Rp</sup>290.000<span class="text-lg font-normal"> / bln</span></div>
-            <img src="assets/img/svg/cloud.svg" alt="Cloud Premium" class="mx-auto mb-6 w-40">
+              <img src="assets/img/cloud-server.png" alt="Cloud Premium" class="mx-auto mb-6 w-32">
           </div>
           <ul class="space-y-3 mb-6 flex flex-col items-center text-center">
             <li class="flex items-start">
@@ -540,7 +540,7 @@
           <div class="text-center">
             <h3 class="text-xl font-bold text-purple-600 mb-2">BNC CLOUD ULTIMATE</h3>
             <div class="text-3xl font-bold text-purple-600 mb-4"><sup class="text-lg">Rp</sup>475.000<span class="text-lg font-normal"> / bln</span></div>
-            <img src="assets/img/svg/cloud.svg" alt="Cloud Ultimate" class="mx-auto mb-6 w-40">
+              <img src="assets/img/cloud-server.png" alt="Cloud Ultimate" class="mx-auto mb-6 w-32">
           </div>
           <ul class="space-y-3 mb-6 flex flex-col items-center text-center">
             <li class="flex items-start">
@@ -600,7 +600,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
         <div>
           <h2 class="text-xl font-bold text-white mb-4 flex items-center">
-            <i class="ri-global-line mr-2 text-[#3F8EFC]"></i> PT BORNEO NETWORK CENTER
+            PT BORNEO NETWORK CENTER
           </h2>
           <p class="mb-4">Jl. Palm Raya, Ruko No. 6, RT 50 RW 07, Kel. Guntung Manggis, Landasan Ulin, Banjarbaru, Kalimantan Selatan, Indonesia</p>
           <div class="flex space-x-4">

@@ -26,7 +26,6 @@ class RegisteredUserController extends Controller
         return view('auth.register', ['captcha' => $captcha]);
     }
 
-
     /**
      * Handle an incoming registration request.
      *
@@ -36,7 +35,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'telepon' => 'required|string|max:20|unique:users,telepon',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'captcha' => ['required', 'digits:5', function ($attribute, $value, $fail) {
                 if ($value != session('captcha_register')) {
@@ -46,16 +45,17 @@ class RegisteredUserController extends Controller
         ]);
 
         // Hapus captcha setelah dipakai
-        Session::forget('captcha');
+        Session::forget('captcha_register');
 
         $user = User::create([
             'name' => $request->name,
-            'email' => $request->email,
+            'telepon' => $request->telepon,
             'password' => Hash::make($request->password),
         ]);
 
+        event(new Registered($user));
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect()->route('user.instance');
     }
 }
