@@ -31,27 +31,19 @@
     }
     
     /* Card hover effect */
+    .card-hover {
+      transition: all 0.3s ease;
+    }
     .card-hover:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
-    
-    /* Pricing card highlight */
-    .pricing-highlight {
-      position: relative;
-      border: 2px solid #3F8EFC;
+    .menu-item {
+      transition: all 0.3s ease;
     }
-    .pricing-highlight::before {
-      content: "POPULER";
-      position: absolute;
-      top: -12px;
-      right: 20px;
-      background: #3F8EFC;
-      color: white;
-      padding: 2px 10px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: bold;
+    .menu-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(5px);
     }
   </style>
 </head>
@@ -206,28 +198,6 @@
               </div>
             </div>
 
-            {{-- <!-- Fitur 3 -->
-            <div class="flex items-start p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
-              <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                <i class="ri-grid-fill text-xl text-white"></i>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-800 mb-1">Integrasi OLT</h4>
-                <p class="text-gray-600 text-sm">Dukungan berbagai merek OLT seperti ZTE, V-SOL, GLOBAL, dan lainnya.</p>
-              </div>
-            </div>
-
-            <!-- Fitur 4 -->
-            <div class="flex items-start p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
-              <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                <i class="ri-ticket-2-line text-xl text-white"></i>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-800 mb-1">Tiket</h4>
-                <p class="text-gray-600 text-sm">Proses pemasangan dan support terpantau otomatis via WhatsApp.</p>
-              </div>
-            </div> --}}
-
             <!-- Fitur 5 -->
             <div class="flex items-start p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
               <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
@@ -239,39 +209,6 @@
               </div>
             </div>
 
-            {{-- <!-- Fitur 6 -->
-            <div class="flex items-start p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
-              <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                <i class="ri-file-list-line text-xl text-white"></i>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-800 mb-1">Invoice</h4>
-                <p class="text-gray-600 text-sm">Dukungan invoice otomatis/manual untuk pelanggan PPPoE & Hotspot.</p>
-              </div>
-            </div>
-
-            <!-- Fitur 7 -->
-            <div class="flex items-start p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
-              <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                <i class="ri-bank-card-line text-xl text-white"></i>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-800 mb-1">Payment Gateway</h4>
-                <p class="text-gray-600 text-sm">Dukungan pembayaran otomatis via QRIS, OVO, Gopay, VA, dan lainnya.</p>
-              </div>
-            </div>
-
-            <!-- Fitur 8 -->
-            <div class="flex items-start p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
-              <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                <i class="ri-bank-line text-xl text-white"></i>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-800 mb-1">Transfer Bank Otomatis</h4>
-                <p class="text-gray-600 text-sm">Otomatisasi pelunasan tagihan ke rekening pribadi/perusahaan.</p>
-              </div>
-            </div> --}}
-
             <!-- Fitur 9 -->
             <div class="flex items-start p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
               <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
@@ -282,17 +219,6 @@
                 <p class="text-gray-600 text-sm">Mitra mengelola pelanggannya sendiri & bisa topup otomatis.</p>
               </div>
             </div>
-
-            {{-- <!-- Fitur 10 -->
-            <div class="flex items-start p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
-              <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                <i class="ri-whatsapp-line text-xl text-white"></i>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-800 mb-1">WhatsApp Gateway</h4>
-                <p class="text-gray-600 text-sm">Notifikasi otomatis via WhatsApp dari RLRadius atau nomor sendiri.</p>
-              </div>
-            </div> --}}
 
             <!-- Fitur 11 -->
             <div class="flex items-start p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
@@ -315,50 +241,6 @@
                 <p class="text-gray-600 text-sm">Mendukung Excel untuk ekspor & impor data ke aplikasi lain.</p>
               </div>
             </div>
-
-            {{-- <!-- Fitur 13 -->
-            <div class="flex items-start p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
-              <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                <i class="ri-bank-card-2-line text-xl text-white"></i>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-800 mb-1">Template Voucher</h4>
-                <p class="text-gray-600 text-sm">Voucher siap pakai dengan desain rapi, bisa dimodifikasi sendiri.</p>
-              </div>
-            </div>
-
-            <!-- Fitur 14 -->
-            <div class="flex items-start p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
-              <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                <i class="ri-stack-line text-xl text-white"></i>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-800 mb-1">Tagihan Multifungsi</h4>
-                <p class="text-gray-600 text-sm">Prabayar, pascabayar, addons, sistem berulang, dan lainnya.</p>
-              </div>
-            </div>
-
-            <!-- Fitur 15 -->
-            <div class="flex items-start p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
-              <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                <i class="ri-global-line text-xl text-white"></i>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-800 mb-1">Custom Domain</h4>
-                <p class="text-gray-600 text-sm">Ganti domain aplikasi sesuai nama brand atau usaha anda.</p>
-              </div>
-            </div>
-
-            <!-- Fitur 16 -->
-            <div class="flex items-start p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
-              <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                <i class="ri-map-pin-line text-xl text-white"></i>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-800 mb-1">Map Pelanggan</h4>
-                <p class="text-gray-600 text-sm">Peta pelanggan dengan status online/offline berbasis Google Maps.</p>
-              </div>
-            </div> --}}
           </div>
         </div>
       </div>
@@ -402,197 +284,75 @@
   </section>
 
   <!-- PRICING SECTION -->
-  <section id="harga" class="py-16 bg-gray-50">
-    <div class="container mx-auto px-6">
-      <header class="text-center mb-12 fade-element">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">Harga Berlangganan</h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Pilih paket yang sesuai dengan kebutuhan bisnis Anda</p>
-      </header>
+<section id="harga" class="py-16 bg-gray-50">
+  <div class="container mx-auto px-6">
+    <header class="text-center mb-12 fade-element">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">Harga Berlangganan</h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">Pilih paket yang sesuai dengan kebutuhan bisnis Anda</p>
+    </header>
 
-      <!-- Alert Informasi -->
-      <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-8 rounded-r fade-element">
-        <div class="flex items-start">
-          <div class="flex-shrink-0">
-            <i class="ri-alert-fill text-red-500 text-xl"></i>
-          </div>
-          <div class="ml-3">
-            <ol class="text-sm text-red-700 space-y-1">
-              <li>1. User Online lebih dari 10.000 tersedia paket Platinum yang dapat diorder dari halaman cloud manager.</li>
-              <li>2. Langganan adalah klien PPPoE, DHCP dan Member Hotspot yang berlangganan bulanan dan memiliki sistem tagihan berkelanjutan.</li>
-              <li>3. User Online adalah batas maksimal klien yang bisa terhubung ke BNC Radius dengan flag Radius (R) di Mikrotik, meliputi: PPPoE, DHCP dan Hotspot.</li>
-              <li>4. Daftar harga dan ketentuan paket di bawah ini dapat berubah sewaktu-waktu tanpa pemberitahuan!</li>
-            </ol>
-          </div>
+    <!-- Alert Informasi -->
+    <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-8 rounded-r fade-element">
+      <div class="flex items-start">
+        <div class="flex-shrink-0">
+          <i class="ri-alert-fill text-red-500 text-xl"></i>
         </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Paket BASIC -->
-        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 fade-element">
-          <div class="text-center">
-            <h3 class="text-xl font-bold text-gray-800 mb-2">BNC CLOUD BASIC</h3>
-            <div class="text-3xl font-bold text-[#3F8EFC] mb-4"><sup class="text-lg">Rp</sup>100.000<span class="text-lg font-normal"> / bln</span></div>
-            <img src="assets/img/cloud-server.png" alt="Cloud Basic" class="mx-auto mb-6 w-32">
-          </div>
-          <ul class="space-y-3 mb-6 flex flex-col items-center text-center">
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span>2 Router MikroTik</span>
-            </li>
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span>200 Langganan</span>
-            </li>
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span>5.000 Voucher</span>
-            </li>
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span class="font-bold text-red-500">250 User Online</span>
-            </li>
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span>Free VPN Radius</span>
-            </li>
-            <li class="flex items-start text-gray-400">
-              <i class="ri-close-line mt-1 mr-2"></i>
-              <span class="line-through">Free VPN Remote</span>
-            </li>
-            <li class="flex items-start text-gray-400">
-              <i class="ri-close-line mt-1 mr-2"></i>
-              <span class="line-through">WhatsApp notifikasi</span>
-            </li>
-            <li class="flex items-start text-gray-400">
-              <i class="ri-close-line mt-1 mr-2"></i>
-              <span class="line-through">Payment Gateway</span>
-            </li>
-            <li class="flex items-start text-gray-400">
-              <i class="ri-close-line mt-1 mr-2"></i>
-              <span class="line-through">Aplikasi client area</span>
-            </li>
-          </ul>
-          <div class="text-center text-sm mb-4">
-            <p class="text-gray-400 line-through">Rp1.200.000 / 12 Bln</p>
-            <p class="text-green-600 font-bold">Rp1.000.000 / 12 Bln</p>
-          </div>
-          <a href="{{ route('login') }}" class="block w-full text-center px-4 py-3 border border-[#3F8EFC] text-[#3F8EFC] font-medium rounded-lg hover:bg-blue-50 transition">Berlangganan</a>
-        </div>
-
-        <!-- Paket PREMIUM -->
-        <div class="bg-white p-6 rounded-xl shadow-lg pricing-highlight fade-element">
-          <div class="text-center">
-            <h3 class="text-xl font-bold text-[#3F8EFC] mb-2">BNC CLOUD PREMIUM</h3>
-            <div class="text-3xl font-bold text-[#3F8EFC] mb-4"><sup class="text-lg">Rp</sup>290.000<span class="text-lg font-normal"> / bln</span></div>
-              <img src="assets/img/cloud-server.png" alt="Cloud Premium" class="mx-auto mb-6 w-32">
-          </div>
-          <ul class="space-y-3 mb-6 flex flex-col items-center text-center">
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span>10 Router MikroTik</span>
-            </li>
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span>500 Langganan</span>
-            </li>
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span>30.000 Voucher</span>
-            </li>
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span class="font-bold text-red-500">600 User Online</span>
-            </li>
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span>Free VPN Radius</span>
-            </li>
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span>Free VPN Remote</span>
-            </li>
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span>WhatsApp notifikasi</span>
-            </li>
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span>Payment Gateway</span>
-            </li>
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span>Aplikasi client area</span>
-            </li>
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span>Custom Domain</span>
-            </li>
-          </ul>
-          <div class="text-center text-sm mb-4">
-            <p class="text-gray-400 line-through">Rp3.540.000 / 12 Bln</p>
-            <p class="text-green-600 font-bold">Rp3.000.000 / 12 Bln</p>
-          </div>
-          <a href="{{ route('login') }}" class="block w-full text-center px-4 py-3 gradient-bg text-white font-medium rounded-lg hover:opacity-90 transition">Berlangganan</a>
-        </div>
-
-        <!-- Paket ULTIMATE -->
-        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 fade-element">
-          <div class="text-center">
-            <h3 class="text-xl font-bold text-purple-600 mb-2">BNC CLOUD ULTIMATE</h3>
-            <div class="text-3xl font-bold text-purple-600 mb-4"><sup class="text-lg">Rp</sup>475.000<span class="text-lg font-normal"> / bln</span></div>
-              <img src="assets/img/cloud-server.png" alt="Cloud Ultimate" class="mx-auto mb-6 w-32">
-          </div>
-          <ul class="space-y-3 mb-6 flex flex-col items-center text-center">
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span>15 Router MikroTik</span>
-            </li>
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span>700 Langganan</span>
-            </li>
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span>50.000 Voucher</span>
-            </li>
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span class="font-bold text-red-500">850 User Online</span>
-            </li>
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span>Free VPN Radius</span>
-            </li>
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span>Free VPN Remote</span>
-            </li>
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span>WhatsApp notifikasi</span>
-            </li>
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span>Payment Gateway</span>
-            </li>
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span>Aplikasi client area</span>
-            </li>
-            <li class="flex items-start">
-              <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
-              <span>Custom Domain</span>
-            </li>
-          </ul>
-          <div class="text-center text-sm mb-4">
-            <p class="text-gray-400 line-through">Rp5.700.000 / 12 Bln</p>
-            <p class="text-green-600 font-bold">Rp4.500.000 / 12 Bln</p>
-          </div>
-          <a href="{{ route('login') }}" class="block w-full text-center px-4 py-3 border border-purple-600 text-purple-600 font-medium rounded-lg hover:bg-purple-50 transition">Berlangganan</a>
+        <div class="ml-3">
+          <ol class="text-sm text-red-700 space-y-1">
+            <li>1. User Online lebih dari 10.000 tersedia paket Platinum.</li>
+            <li>2. Langganan = PPPoE, DHCP & Hotspot berlangganan.</li>
+            <li>3. User Online = jumlah client aktif di Mikrotik (R).</li>
+            <li>4. Harga dapat berubah sewaktu-waktu tanpa pemberitahuan.</li>
+          </ol>
         </div>
       </div>
     </div>
-  </section>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        @foreach ($pakets as $paket)
+        <div class="bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all p-8 flex flex-col justify-between border-2 border-indigo-600">
+          <div>
+            <h3 class="text-xl font-bold text-indigo-600 mb-2 text-center">BNC CLOUD {{ strtoupper($paket->nama) }}</h3>
+            <div class="text-center text-3xl font-extrabold text-indigo-600 mb-4">
+              <sup class="text-base font-medium">Rp</sup>{{ number_format($paket->harga_bulanan, 0, ',', '.') }}<span class="text-base font-normal"> / bln</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/2082/2082812.png" class="w-20 mx-auto mb-6" alt="Cloud Icon">
+            <ul class="text-gray-700 space-y-3 mb-6 text-sm">
+              <li class="flex items-center justify-center"><i class="fa fa-check text-green-500 mt-1 mr-2"></i> {{ $paket->mikrotik }} Router MikroTik</li>
+              <li class="flex items-center justify-center"><i class="fa fa-check text-green-500 mt-1 mr-2"></i> {{ number_format($paket->langganan, 0, ',', '.') }} Langganan</li>
+              <li class="flex items-center justify-center"><i class="fa fa-check text-green-500 mt-1 mr-2"></i> {{ number_format($paket->voucher, 0, ',', '.') }} Voucher</li>
+              <li class="flex items-center justify-center"><i class="fa fa-check text-green-500 mt-1 mr-2"></i> <span class="font-semibold text-red-500">{{ number_format($paket->user_online, 0, ',', '.') }} User Online</span></li>
+
+              @php
+                $fiturTambahan = [
+                  'vpn_tunnel' => 'Free VPN Radius',
+                  'vpn_remote' => 'Free VPN Remote',
+                  'whatsapp_gateway' => 'WhatsApp notifikasi',
+                  'payment_gateway' => 'Payment Gateway',
+                  'client_area' => 'Aplikasi client area',
+                  'custom_domain' => 'Custom Domain',
+                ];
+              @endphp
+
+              @foreach ($fiturTambahan as $key => $label)
+              <li class="flex items-center justify-center">
+                <i class="{{ $paket->$key ? 'fa fa-check text-green-500' : 'fa fa-times text-gray-400' }} mt-1 mr-2"></i>
+                <span class="{{ $paket->$key ? '' : 'text-gray-400 line-through' }}">{{ $label }}</span>
+              </li>
+              @endforeach
+            </ul>
+          </div>
+          <div class="text-center text-sm mb-4">
+            <p class="text-gray-400 line-through">Rp{{ number_format((int)$paket->harga_bulanan * 12, 0, ',', '.') }} / 12 Bln</p>
+            <p class="text-green-600 font-bold">Rp{{ number_format($paket->harga_tahunan, 0, ',', '.') }} / 12 Bln</p>
+          </div>
+          <a href="{{ route('login') }}" class="block w-full text-center px-4 py-3 border border-{{ $loop->index == 2 ? 'purple-600' : '[#3F8EFC]' }} text-{{ $loop->index == 2 ? 'purple-600' : '[#3F8EFC]' }} font-medium rounded-lg hover:bg-{{ $loop->index == 2 ? 'purple-50' : 'blue-50' }} transition">Berlangganan</a>
+        </div>
+        @endforeach
+      </div>
+  </div>
+</section>
+
 
   <!-- Footer -->
   <footer id="footer" class="bg-gray-800 text-gray-300 py-12">

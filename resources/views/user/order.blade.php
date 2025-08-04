@@ -45,42 +45,50 @@
       </header>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Repeatable Card Template Start -->
-        @foreach (['BASIC' => ['color' => 'blue', 'price' => '100.000', 'router' => '2', 'subs' => '200', 'voucher' => '5.000', 'online' => '250', 'vpn' => true, 'remote' => false, 'wa' => false, 'pg' => false, 'app' => false, 'domain' => false, 'annual' => ['1.200.000', '1.000.000']],
-                  'PREMIUM' => ['color' => 'blue', 'price' => '290.000', 'router' => '10', 'subs' => '500', 'voucher' => '30.000', 'online' => '600', 'vpn' => true, 'remote' => true, 'wa' => true, 'pg' => true, 'app' => true, 'domain' => true, 'annual' => ['3.540.000', '3.000.000']],
-                  'ULTIMATE' => ['color' => 'purple', 'price' => '475.000', 'router' => '15', 'subs' => '700', 'voucher' => '50.000', 'online' => '850', 'vpn' => true, 'remote' => true, 'wa' => true, 'pg' => true, 'app' => true, 'domain' => true, 'annual' => ['5.700.000', '4.500.000']]] as $name => $data)
-        <div class="bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all p-8 flex flex-col justify-between border-2 border-{{ $data['color'] }}-600">
+        @foreach ($pakets as $paket)
+        <div class="bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all p-8 flex flex-col justify-between border-2 border-indigo-600">
           <div>
-            <h3 class="text-xl font-bold text-{{ $data['color'] }}-600 mb-2 text-center">BNC CLOUD {{ $name }}</h3>
-            <div class="text-center text-3xl font-extrabold text-{{ $data['color'] }}-600 mb-4">
-              <sup class="text-base font-medium">Rp</sup>{{ $data['price'] }}<span class="text-base font-normal"> / bln</span>
+            <h3 class="text-xl font-bold text-indigo-600 mb-2 text-center">BNC CLOUD {{ strtoupper($paket->nama) }}</h3>
+            <div class="text-center text-3xl font-extrabold text-indigo-600 mb-4">
+              <sup class="text-base font-medium">Rp</sup>{{ number_format($paket->harga_bulanan, 0, ',', '.') }}<span class="text-base font-normal"> / bln</span>
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/2082/2082812.png" class="w-20 mx-auto mb-6" alt="Cloud Icon">
             <ul class="text-gray-700 space-y-3 mb-6 text-sm">
-              <li class="flex items-center justify-center"><i class="ri-check-line text-green-500 mt-1 mr-2"></i> {{ $data['router'] }} Router MikroTik</li>
-              <li class="flex items-center justify-center"><i class="ri-check-line text-green-500 mt-1 mr-2"></i> {{ $data['subs'] }} Langganan</li>
-              <li class="flex items-center justify-center"><i class="ri-check-line text-green-500 mt-1 mr-2"></i> {{ $data['voucher'] }} Voucher</li>
-              <li class="flex items-center justify-center"><i class="ri-check-line text-green-500 mt-1 mr-2"></i> <span class="font-semibold text-red-500">{{ $data['online'] }} User Online</span></li>
-              @foreach (['vpn' => 'Free VPN Radius', 'remote' => 'Free VPN Remote', 'wa' => 'WhatsApp notifikasi', 'pg' => 'Payment Gateway', 'app' => 'Aplikasi client area', 'domain' => 'Custom Domain'] as $key => $label)
+              <li class="flex items-center justify-center"><i class="fa fa-check text-green-500 mt-1 mr-2"></i> {{ $paket->mikrotik }} Router MikroTik</li>
+              <li class="flex items-center justify-center"><i class="fa fa-check text-green-500 mt-1 mr-2"></i> {{ number_format($paket->langganan, 0, ',', '.') }} Langganan</li>
+              <li class="flex items-center justify-center"><i class="fa fa-check text-green-500 mt-1 mr-2"></i> {{ number_format($paket->voucher, 0, ',', '.') }} Voucher</li>
+              <li class="flex items-center justify-center"><i class="fa fa-check text-green-500 mt-1 mr-2"></i> <span class="font-semibold text-red-500">{{ number_format($paket->user_online, 0, ',', '.') }} User Online</span></li>
+
+              @php
+                $fiturTambahan = [
+                  'vpn_tunnel' => 'Free VPN Radius',
+                  'vpn_remote' => 'Free VPN Remote',
+                  'whatsapp_gateway' => 'WhatsApp notifikasi',
+                  'payment_gateway' => 'Payment Gateway',
+                  'client_area' => 'Aplikasi client area',
+                  'custom_domain' => 'Custom Domain',
+                ];
+              @endphp
+
+              @foreach ($fiturTambahan as $key => $label)
               <li class="flex items-center justify-center">
-                <i class="{{ $data[$key] ? 'ri-check-line text-green-500' : 'ri-close-line text-gray-400' }} mt-1 mr-2"></i>
-                <span class="{{ $data[$key] ? '' : 'text-gray-400 line-through' }}">{{ $label }}</span>
+                <i class="{{ $paket->$key ? 'fa fa-check text-green-500' : 'fa fa-times text-gray-400' }} mt-1 mr-2"></i>
+                <span class="{{ $paket->$key ? '' : 'text-gray-400 line-through' }}">{{ $label }}</span>
               </li>
               @endforeach
             </ul>
           </div>
           <div class="text-center text-sm mb-4">
-            <p class="text-gray-400 line-through">Rp{{ $data['annual'][0] }} / 12 Bln</p>
-            <p class="text-green-600 font-bold">Rp{{ $data['annual'][1] }} / 12 Bln</p>
+            <p class="text-gray-400 line-through">Rp{{ number_format((int)$paket->harga_bulanan * 12, 0, ',', '.') }} / 12 Bln</p>
+            <p class="text-green-600 font-bold">Rp{{ number_format($paket->harga_tahunan, 0, ',', '.') }} / 12 Bln</p>
           </div>
-          <a href="https://wa.me/6281349335089?text={{ urlencode('Halo Admin, saya ' . Auth::user()->name . ' dengan email ' . Auth::user()->email . ' ingin berlangganan paket ' . $name . '. Bagaimana saya bisa melanjutkan proses transaksinya?') }}" 
+          <a href="https://wa.me/6281349335089?text={{ urlencode('Halo Admin, saya ' . Auth::user()->name . ' dengan email ' . Auth::user()->email . ' ingin berlangganan paket ' . $paket->nama . '. Bagaimana saya bisa melanjutkan proses transaksinya?') }}"
             target="_blank"
-            class="block w-full text-center px-4 py-3 rounded-lg border border-{{ $data['color'] }}-600 text-{{ $data['color'] }}-600 hover:bg-{{ $data['color'] }}-50 font-semibold transition">
+            class="block w-full text-center px-4 py-3 rounded-lg border border-indigo-600 text-indigo-600 hover:bg-indigo-50 font-semibold transition">
             Berlangganan
           </a>
         </div>
         @endforeach
-        <!-- Repeatable Card Template End -->
       </div>
     </div>
   </section>

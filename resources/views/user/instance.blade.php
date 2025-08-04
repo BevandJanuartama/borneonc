@@ -55,16 +55,6 @@
                 </a>
             </div>
         </div>
-
-        <!-- Instance Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-            <div class="bg-white rounded-xl shadow-md p-6 card-hover">
-                <h4 class="text-lg font-semibold text-gray-700 mb-2">Instance #1</h4>
-                <p class="text-gray-500 text-sm">Ubuntu 20.04, 2 CPU, 4 GB RAM</p>
-                <p class="text-green-500 text-sm mt-2 font-medium">Status: Aktif</p>
-            </div>
-            <!-- Tambahkan lebih banyak kartu instance jika diperlukan -->
-        </div>
     </main>
 </body>
 </html>

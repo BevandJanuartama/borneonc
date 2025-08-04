@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PaketController;
+use App\Http\Middleware\CheckLevel;
+use App\Models\Paket;
 
 /*
 |--------------------------------------------------------------------------
@@ -10,59 +12,61 @@ use Illuminate\Support\Facades\Auth;
 |--------------------------------------------------------------------------
 */
 
-// Halaman utama (welcome)
+// Halaman utama
 Route::get('/', function () {
-    return view('welcome');
+    $pakets = Paket::all();
+    return view('welcome', compact('pakets'));
 });
 
-// Dashboard
-Route::get('/instance', function () {
-    return view('user.instance');
-})->middleware(['auth', 'verified'])->name('user.instance');
+// ===================== ROUTE UNTUK USER ===================== //
+Route::middleware(['auth', '\App\Http\Middleware\CheckLevel:user'])->group(function () {
+    // Dashboard
+    Route::get('/instance', function () {
+        return view('user.instance');
+    })->middleware(['verified'])->name('user.instance');
 
-// Remote Access
-Route::get('/remote', function () {
-    return view('user.remote');
-})->middleware(['auth'])->name('user.remote');
+    // Remote Access
+    Route::get('/remote', function () {
+        return view('user.remote');
+    })->name('user.remote');
 
-// Billing & Invoice
-Route::get('/invoice', function () {
-    return view('user.invoice');
-})->middleware(['auth'])->name('user.invoice');
+    // Billing & Invoice
+    Route::get('/invoice', function () {
+        return view('user.invoice');
+    })->name('user.invoice');
 
-// Account Settings
-Route::get('/account', function () {
-    return view('user.account');
-})->middleware(['auth'])->name('user.account');
+    // Account Settings
+    Route::get('/account', function () {
+        return view('user.account');
+    })->name('user.account');
 
-// Halaman "Tambah Instance"
-Route::get('/order', function () {
-    return view('user.order');
-})->middleware(['auth'])->name('user.order');
-
-// Atur Agar admin masuk db admin
-Route::middleware(['auth'])->group(function () {
-    Route::get('/admin/dashboard', function () {
-        if (Auth::user()->level !== 'admin') {
-            abort(403);
-        }
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
-});
-
-
-
-// Grup route untuk user yang sudah login
-Route::middleware('auth')->group(function () {
+    // Tambah Instance (Order Page dengan data dinamis dari database)
+    Route::get('/order', [PaketController::class, 'showForUser'])->name('user.order');
 
     // Profil
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
 });
 
-// Auth bawaan Laravel Breeze/Fortify
+// ===================== ROUTE UNTUK ADMIN ===================== //
+Route::middleware(['auth', CheckLevel::class . ':admin'])->group(function () {
+    // Dashboard Admin
+    Route::get('/admin/dashboard', fn () => view('admin.dashboard'))->name('admin.dashboard');
+
+    // ===== CRUD PAKET =====
+    Route::get('/admin/paket/index', [PaketController::class, 'index'])->name('paket.index');
+    Route::get('/admin/paket/create', [PaketController::class, 'create'])->name('paket.create');
+    Route::post('/admin/paket/store', [PaketController::class, 'store'])->name('paket.store');
+    Route::get('/admin/paket/{id}/edit', [PaketController::class, 'edit'])->name('paket.edit');
+    Route::put('/admin/paket/{id}', [PaketController::class, 'update'])->name('paket.update');
+    Route::delete('/admin/paket/{id}', [PaketController::class, 'destroy'])->name('paket.destroy');
+});
+
+Route::get('/dashboard', function () {
+    return redirect()->route('admin.dashboard');
+})->name('dashboard');
+
+
+// Route Auth (Laravel Breeze)
 require __DIR__.'/auth.php';
-
-
