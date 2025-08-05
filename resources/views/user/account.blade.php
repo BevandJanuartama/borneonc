@@ -81,7 +81,8 @@
     @include('layouts.sidebar')
 
   <!-- Main Content -->
-  <main class="flex-1 ml-64 p-8">
+      <main class="md:pl-72 pt-20 w-full p-8">
+        
     <!-- Header -->
     <div class="flex justify-between items-center mb-8">
       <div>

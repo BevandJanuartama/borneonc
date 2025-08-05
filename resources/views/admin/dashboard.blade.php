@@ -11,6 +11,13 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Chart.js Gauge Plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-doughnutlabel@1.1.2/dist/chartjs-plugin-doughnutlabel.min.js"></script>
+
+
   <style>
     .sidebar-gradient {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -37,14 +44,22 @@
   @include('layouts.adminbar')
 
 
-  <!-- Harga Section -->
-  <section id="harga" class="py-20 pl-72 w-full">
-    <div class="container mx-auto px-4">
-      <header class="text-center mb-14">
-        <h2 class="text-4xl font-bold text-gray-800 mb-2">ini halamaan daashboard admin</h2>
-      </header>
-    </div>
-  </section>
+  <!-- Wrapper utama konten -->
+  <main class="md:pl-72 w-full">
+    
+    <!-- Section 1 -->
+    <section id="harga" class="py-20">
+      <div class="container mx-auto px-4">
+        <header class="text-center mb-14">
+          <h2 class="text-4xl font-bold text-gray-800 mb-2">ini halamaan dashboard admin</h2>
+        </header>
+      </div>
+    </section>
+
+    <!-- Tambah section apapun tanpa perlu mikir pl-72 -->
+  
+</main>
+
 
 </body>
 </html>

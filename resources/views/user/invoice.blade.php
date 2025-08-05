@@ -36,9 +36,11 @@
   <!-- Sidebar -->
   @include('layouts.sidebar')
 
+  <!-- Main Content -->
+      <main class="md:pl-72 pt-20 w-full p-8">
 
   <!-- Harga Section -->
-  <section id="harga" class="py-20 pl-72 w-full">
+  <section id="harga" class="py-20 w-full">
     <div class="container mx-auto px-4">
       <header class="text-center mb-14">
         <h2 class="text-4xl font-bold text-gray-800 mb-2">ini halamaan invoice</h2>

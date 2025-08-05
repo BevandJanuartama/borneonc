@@ -30,45 +30,47 @@
   @include('layouts.adminbar')
 
   <!-- Main Content -->
-  <main class="pl-72 p-8 w-full">
-    <h1 class="text-2xl font-bold mb-6">Edit Paket</h1>
+  <main class="md:pl-72 pt-20 w-full p-8">
+    <h1 class="text-2xl font-bold mb-6">{{ isset($paket) ? 'Edit Paket' : 'Tambah Paket' }}</h1>
 
-    <form action="{{ route('paket.update', $paket->id) }}" method="POST">
+    <form action="{{ isset($paket) ? route('paket.update', $paket->id) : route('paket.store') }}" method="POST">
       @csrf
-      @method('PUT')
+      @if(isset($paket))
+        @method('PUT')
+      @endif
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label class="block mb-1">Nama Paket</label>
-          <input type="text" name="nama" class="border p-2 w-full" value="{{ old('nama', $paket->nama) }}">
+          <label class="block mb-1 font-semibold">Nama Paket</label>
+          <input type="text" name="nama" class="border p-2 w-full rounded" value="{{ old('nama', $paket->nama ?? '') }}">
         </div>
         <div>
-          <label class="block mb-1">Harga Bulanan</label>
-          <input type="number" name="harga_bulanan" class="border p-2 w-full" value="{{ old('harga_bulanan', $paket->harga_bulanan) }}">
+          <label class="block mb-1 font-semibold">Harga Bulanan</label>
+          <input type="number" name="harga_bulanan" class="border p-2 w-full rounded" value="{{ old('harga_bulanan', $paket->harga_bulanan ?? '') }}">
         </div>
         <div>
-          <label class="block mb-1">Harga Tahunan</label>
-          <input type="number" name="harga_tahunan" class="border p-2 w-full" value="{{ old('harga_tahunan', $paket->harga_tahunan) }}">
+          <label class="block mb-1 font-semibold">Harga Tahunan</label>
+          <input type="number" name="harga_tahunan" class="border p-2 w-full rounded" value="{{ old('harga_tahunan', $paket->harga_tahunan ?? '') }}">
         </div>
         <div>
-          <label class="block mb-1">Mikrotik</label>
-          <input type="number" name="mikrotik" class="border p-2 w-full" value="{{ old('mikrotik', $paket->mikrotik) }}">
+          <label class="block mb-1 font-semibold">Mikrotik</label>
+          <input type="number" name="mikrotik" class="border p-2 w-full rounded" value="{{ old('mikrotik', $paket->mikrotik ?? '') }}">
         </div>
         <div>
-          <label class="block mb-1">Langganan</label>
-          <input type="number" name="langganan" class="border p-2 w-full" value="{{ old('langganan', $paket->langganan) }}">
+          <label class="block mb-1 font-semibold">Langganan</label>
+          <input type="number" name="langganan" class="border p-2 w-full rounded" value="{{ old('langganan', $paket->langganan ?? '') }}">
         </div>
         <div>
-          <label class="block mb-1">Voucher</label>
-          <input type="number" name="voucher" class="border p-2 w-full" value="{{ old('voucher', $paket->voucher) }}">
+          <label class="block mb-1 font-semibold">Voucher</label>
+          <input type="number" name="voucher" class="border p-2 w-full rounded" value="{{ old('voucher', $paket->voucher ?? '') }}">
         </div>
         <div>
-          <label class="block mb-1">User Online</label>
-          <input type="number" name="user_online" class="border p-2 w-full" value="{{ old('user_online', $paket->user_online) }}">
+          <label class="block mb-1 font-semibold">User Online</label>
+          <input type="number" name="user_online" class="border p-2 w-full rounded" value="{{ old('user_online', $paket->user_online ?? '') }}">
         </div>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
         @php
           $checkboxes = [
             'vpn_tunnel' => 'VPN Tunnel',
@@ -81,20 +83,21 @@
         @endphp
 
         @foreach ($checkboxes as $key => $label)
-          <label class="inline-flex items-center">
+          <label class="inline-flex items-center space-x-2">
             <input type="checkbox" name="{{ $key }}" value="1"
-              {{ old($key, $paket->$key) ? 'checked' : '' }}>
-            <span class="ml-2">{{ $label }}</span>
+              {{ old($key, $paket->$key ?? false) ? 'checked' : '' }}>
+            <span>{{ $label }}</span>
           </label>
         @endforeach
       </div>
 
       <div class="mt-6">
         <button class="bg-indigo-600 text-white px-6 py-2 rounded hover:bg-indigo-700 transition">
-          Update
+          {{ isset($paket) ? 'Update' : 'Simpan' }}
         </button>
       </div>
     </form>
   </main>
+
 </body>
 </html>

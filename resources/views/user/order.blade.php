@@ -36,8 +36,10 @@
   <!-- Sidebar -->
   @include('layouts.sidebar')
 
+  <main class="md:pl-72 w-full p-8">
+
   <!-- Harga Section -->
-  <section id="harga" class="py-20 pl-72 w-full">
+  <section id="harga" class="py-20 w-full">
     <div class="container mx-auto px-4">
       <header class="text-center mb-14">
         <h2 class="text-4xl font-bold text-gray-800 mb-2">Harga Berlangganan</h2>
@@ -49,8 +51,9 @@
         <div class="bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all p-8 flex flex-col justify-between border-2 border-indigo-600">
           <div>
             <h3 class="text-xl font-bold text-indigo-600 mb-2 text-center">BNC CLOUD {{ strtoupper($paket->nama) }}</h3>
-            <div class="text-center text-3xl font-extrabold text-indigo-600 mb-4">
-              <sup class="text-base font-medium">Rp</sup>{{ number_format($paket->harga_bulanan, 0, ',', '.') }}<span class="text-base font-normal"> / bln</span>
+            <div class="text-center text-3xl font-extrabold text-indigo-600 mb-4 break-words">
+              <sup class="text-base font-medium">Rp</sup>{{ number_format($paket->harga_bulanan, 0, ',', '.') }}
+              <span class="text-base font-normal"> / bln</span>
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/2082/2082812.png" class="w-20 mx-auto mb-6" alt="Cloud Icon">
             <ul class="text-gray-700 space-y-3 mb-6 text-sm">
@@ -82,7 +85,7 @@
             <p class="text-gray-400 line-through">Rp{{ number_format((int)$paket->harga_bulanan * 12, 0, ',', '.') }} / 12 Bln</p>
             <p class="text-green-600 font-bold">Rp{{ number_format($paket->harga_tahunan, 0, ',', '.') }} / 12 Bln</p>
           </div>
-          <a href="https://wa.me/6281349335089?text={{ urlencode('Halo Admin, saya ' . Auth::user()->name . ' dengan email ' . Auth::user()->email . ' ingin berlangganan paket ' . $paket->nama . '. Bagaimana saya bisa melanjutkan proses transaksinya?') }}"
+          <a href="https://wa.me/6281349335089?text={{ urlencode('Halo Admin, saya ' . Auth::user()->name . ' ingin berlangganan paket ' . $paket->nama . '. Bagaimana saya bisa melanjutkan proses transaksinya?') }}"
             target="_blank"
             class="block w-full text-center px-4 py-3 rounded-lg border border-indigo-600 text-indigo-600 hover:bg-indigo-50 font-semibold transition">
             Berlangganan
@@ -92,6 +95,7 @@
       </div>
     </div>
   </section>
+  </main>
 
 </body>
 </html>
