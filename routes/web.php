@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaketController;
 use App\Http\Middleware\CheckLevel;
 use App\Models\Paket;
+use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\ProfileVoucherController;
+use App\Http\Controllers\ResellerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +47,10 @@ Route::middleware(['auth', '\App\Http\Middleware\CheckLevel:user'])->group(funct
     // Tambah Instance (Order Page dengan data dinamis dari database)
     Route::get('/order', [PaketController::class, 'showForUser'])->name('user.order');
 
+    Route::get('/subs', [SubscriptionController::class, 'create'])->name('subscription.create');
+    Route::post('/subs', [SubscriptionController::class, 'store'])->name('subscription.store');
+
+
     // Profil
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -63,9 +71,28 @@ Route::middleware(['auth', CheckLevel::class . ':admin'])->group(function () {
     Route::delete('/admin/paket/{id}', [PaketController::class, 'destroy'])->name('paket.destroy');
 });
 
+    Route::get('/reseller', [ResellerController::class, 'index'])->name('resellers.index');
+    Route::get('/reseller/create', [ResellerController::class, 'create'])->name('resellers.create');
+    Route::post('/reseller/store', [ResellerController::class, 'store'])->name('resellers.store');
+    Route::get('/reseller/{id}/edit', [ResellerController::class, 'edit'])->name('resellers.edit');
+    Route::put('/reseller/{id}', [ResellerController::class, 'update'])->name('resellers.update');
+    Route::delete('/reseller/{id}', [ResellerController::class, 'destroy'])->name('resellers.delete');
+
+
+    Route::get('/voucher', [ProfileVoucherController::class, 'index'])->name('voucher.index');
+    Route::get('/voucher/create', [ProfileVoucherController::class, 'create'])->name('voucher.create');
+    Route::post('/voucher/store', [ProfileVoucherController::class, 'store'])->name('voucher.store');
+    Route::get('/voucher/{id}/edit', [ProfileVoucherController::class, 'edit'])->name('voucher.edit');
+    Route::put('/voucher/{id}', [ProfileVoucherController::class, 'update'])->name('voucher.update');
+    Route::delete('/voucher/{id}', [ProfileVoucherController::class, 'destroy'])->name('voucher.delete');
+
+
+
 Route::get('/dashboard', function () {
     return redirect()->route('admin.dashboard');
 })->name('dashboard');
+
+
 
 
 // Route Auth (Laravel Breeze)

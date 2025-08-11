@@ -85,11 +85,11 @@
             <p class="text-gray-400 line-through">Rp{{ number_format((int)$paket->harga_bulanan * 12, 0, ',', '.') }} / 12 Bln</p>
             <p class="text-green-600 font-bold">Rp{{ number_format($paket->harga_tahunan, 0, ',', '.') }} / 12 Bln</p>
           </div>
-          <a href="https://wa.me/6281349335089?text={{ urlencode('Halo Admin, saya ' . Auth::user()->name . ' ingin berlangganan paket ' . $paket->nama . '. Bagaimana saya bisa melanjutkan proses transaksinya?') }}"
-            target="_blank"
-            class="block w-full text-center px-4 py-3 rounded-lg border border-indigo-600 text-indigo-600 hover:bg-indigo-50 font-semibold transition">
-            Berlangganan
-          </a>
+          <a href="{{ route('subscription.create', ['paket_id' => $paket->id]) }}"
+  class="block w-full text-center px-4 py-3 rounded-lg border border-indigo-600 text-indigo-600 hover:bg-indigo-50 font-semibold transition">
+  Berlangganan
+</a>
+
         </div>
         @endforeach
       </div>

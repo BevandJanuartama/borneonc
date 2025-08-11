@@ -56,7 +56,7 @@
         </h1>
       </div>
 
-      <div class="p-6 flex items-center space-x-4 border-b border-white/20">
+      {{-- <div class="p-6 flex items-center space-x-4 border-b border-white/20">
         <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
           <i class="fas fa-user text-white text-xl"></i>
         </div>
@@ -67,38 +67,114 @@
             <span class="font-semibold text-white block">Guest</span>
           @endif
         </div>
-      </div>
+      </div> --}}
 
       <nav class="p-4">
       <ul class="space-y-2">
+        <!-- Dashboard -->
         <li>
-          <a href="/instance"
-             class="menu-item flex items-center space-x-3 p-3 rounded-lg 
-             {{ Request::is('instance*') || Request::is('order*') || Request::is('subs*') ? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
-            <i class="fas fa-microchip w-5"></i><span>Instances</span>
+          <a href="/dashboard"
+            class="menu-item flex items-center space-x-3 p-3 rounded-lg 
+            {{ Request::is('dashboard') ? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
+            <i class="fas fa-home w-5"></i><span>Dashboard</span>
           </a>
         </li>
+
+        <!-- Router -->
         <li>
-          <a href="/remote"
-             class="menu-item flex items-center space-x-3 p-3 rounded-lg 
-             {{ Request::is('remote') ? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
-            <i class="fas fa-shield-alt w-5"></i><span>Remote Access</span>
+          <a href="/router"
+            class="menu-item flex items-center space-x-3 p-3 rounded-lg 
+            {{ Request::is('router*') ? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
+            <i class="fas fa-network-wired w-5"></i><span>Router</span>
           </a>
         </li>
+
+        <!-- Mitra -->
         <li>
-          <a href="/invoice"
-             class="menu-item flex items-center space-x-3 p-3 rounded-lg 
-             {{ Request::is('invoice') ? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
-            <i class="fas fa-file-invoice-dollar w-5"></i><span>Billing & Invoice</span>
+          <a href="/reseller"
+            class="menu-item flex items-center space-x-3 p-3 rounded-lg 
+            {{ Request::is('mitra*') ? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
+            <i class="fas fa-handshake w-5"></i><span>Mitra</span>
           </a>
         </li>
+
+        <!-- Voucher -->
         <li>
-          <a href="/account"
-             class="menu-item flex items-center space-x-3 p-3 rounded-lg 
-             {{ Request::is('account*') ? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
-            <i class="fas fa-user-cog w-5"></i><span>Account Settings</span>
+        <button 
+            class="menu-item flex items-center justify-between w-full p-3 rounded-lg 
+                {{ request()->is('voucher*') ? 'bg-white/20 text-white font-semibold' : 'text-white/80 hover:text-white' }}" 
+            onclick="toggleSubmenu('voucherMenu')">
+            <span class="flex items-center space-x-3">
+            <i class="fas fa-ticket-alt w-5"></i><span>Voucher</span>
+            </span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <ul id="voucherMenu" class="ml-8 mt-1 {{ request()->is('voucher*') ? '' : 'hidden' }} space-y-1">
+            <li>
+            <a href="/voucher"
+                class="menu-item block p-2 rounded-lg 
+                {{ request()->routeIs('voucher.index') ? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
+                Profile Voucher
+            </a>
+            </li>
+            <li>
+            <a href="/voucher/stok"
+                class="menu-item block p-2 rounded-lg 
+                {{ request()->routeIs('voucher.stok') ? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
+                Stok Voucher
+            </a>
+            </li>
+        </ul>
+        </li>
+
+
+
+        <!-- Tiket -->
+        <li>
+          <a href="/tiket"
+            class="menu-item flex items-center space-x-3 p-3 rounded-lg 
+            {{ Request::is('tiket*') ? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
+            <i class="fas fa-envelope-open-text w-5"></i><span>Tiket</span>
           </a>
         </li>
+
+        <!-- Transaksi -->
+        <li>
+          <a href="/transaksi"
+            class="menu-item flex items-center space-x-3 p-3 rounded-lg 
+            {{ Request::is('transaksi*') ? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
+            <i class="fas fa-exchange-alt w-5"></i><span>Transaksi</span>
+          </a>
+        </li>
+
+        <!-- Setting -->
+        <li>
+          <a href="/setting"
+            class="menu-item flex items-center space-x-3 p-3 rounded-lg 
+            {{ Request::is('setting*') ? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
+            <i class="fas fa-cog w-5"></i><span>Setting</span>
+          </a>
+        </li>
+
+        <!-- Admin -->
+        <li>
+          <a href="/admin"
+            class="menu-item flex items-center space-x-3 p-3 rounded-lg 
+            {{ Request::is('admin*') ? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
+            <i class="fas fa-user-shield w-5"></i><span>Admin</span>
+          </a>
+        </li>
+
+        <!-- Logs -->
+        <li>
+          <a href="/logs"
+            class="menu-item flex items-center space-x-3 p-3 rounded-lg 
+            {{ Request::is('logs*') ? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
+            <i class="fas fa-history w-5"></i><span>Logs</span>
+          </a>
+        </li>
+
+        <!-- Logout -->
         <li class="pt-4 border-t border-white/20 mt-4">
           <form method="POST" action="{{ route('logout') }}">
             @csrf
@@ -109,7 +185,13 @@
         </li>
       </ul>
     </nav>
-    </div>
+
+    <script>
+      function toggleSubmenu(id) {
+        document.getElementById(id).classList.toggle('hidden');
+      }
+    </script>
+
 
     <!-- Footer Sidebar -->
     <div class="text-white text-xs px-6 py-4 border-t border-white/20">
@@ -150,3 +232,4 @@
 
 </body>
 </html>
+

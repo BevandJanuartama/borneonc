@@ -33,24 +33,99 @@
     /* Card hover effect */
     .card-hover {
       transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     }
     .card-hover:hover {
       transform: translateY(-5px);
       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
+    
+    /* Modern menu item */
     .menu-item {
+      position: relative;
       transition: all 0.3s ease;
     }
-    .menu-item:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateX(5px);
+    .menu-item:after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #3F8EFC;
+      transition: width 0.3s ease;
+    }
+    .menu-item:hover:after {
+      width: 100%;
+    }
+    
+    /* Modern pricing card */
+    .pricing-card {
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    .pricing-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* FAQ accordion */
+    .accordion-item {
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    .accordion-button {
+      background: white;
+      color: #3F8EFC;
+      font-weight: 500;
+      padding: 16px;
+      width: 100%;
+      text-align: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .accordion-button:hover {
+      background: #f8fafc;
+    }
+    .accordion-button:after {
+      content: '▲';
+      float: right;
+      font-weight: bold;
+    }
+    .accordion-button.collapsed:after {
+      content: '▼';
+    }
+    .accordion-body {
+      padding: 0 16px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      background: white;
+    }
+    .accordion-body.show {
+      padding: 16px;
+      max-height: 500px;
+    }
+    
+    /* Subtle floating animation */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    .floating {
+      animation: float 6s ease-in-out infinite;
     }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
   <!-- HEADER -->
-  <header id="mainHeader" class="fixed top-0 left-0 w-full z-50 bg-white shadow transition-all duration-300">
+  <header id="mainHeader" class="fixed top-0 left-0 w-full z-50 bg-white shadow-md transition-all duration-300">
     <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
       <h1 class="text-xl font-bold text-[#3F8EFC] flex items-center">
         <i class="ri-global-line mr-2"></i> BORNEO NETWORK CENTER
@@ -59,12 +134,12 @@
         <i class="ri-menu-line"></i>
       </button>
       <nav class="hidden md:flex gap-6 font-medium text-gray-700 items-center">
-        <a href="#beranda" class="hover:text-[#3F8EFC] transition">Beranda</a>
-        <a href="#tentang" class="hover:text-[#3F8EFC] transition">Tentang Kami</a>
-        <a href="#fitur" class="hover:text-[#3F8EFC] transition">Fitur</a>
-        <a href="#harga" class="hover:text-[#3F8EFC] transition">Harga</a>
-        <a href="#footer" class="hover:text-[#3F8EFC] transition">Kontak</a>
-        <a href="{{ route('login') }}" class="px-4 py-2 gradient-bg text-white rounded-lg hover:opacity-90 transition">Login</a>
+        <a href="#beranda" class="menu-item hover:text-[#3F8EFC]">Beranda</a>
+        <a href="#tentang" class="menu-item hover:text-[#3F8EFC]">Tentang Kami</a>
+        <a href="#fitur" class="menu-item hover:text-[#3F8EFC]">Fitur</a>
+        <a href="#harga" class="menu-item hover:text-[#3F8EFC]">Harga</a>
+        <a href="#footer" class="menu-item hover:text-[#3F8EFC]">Kontak</a>
+        <a href="{{ route('login') }}" class="px-4 py-2 gradient-bg text-white rounded-lg hover:opacity-90 transition shadow hover:shadow-md">Login</a>
         <a href="{{ route('register') }}" class="px-4 py-2 border border-[#3F8EFC] text-[#3F8EFC] rounded-lg hover:bg-blue-50 transition">Register</a>
       </nav>
     </div>
@@ -74,30 +149,30 @@
   <div id="overlay" class="fixed inset-0 bg-black bg-opacity-40 z-40 hidden"></div>
   <div id="sidebar" class="fixed top-0 right-0 w-64 h-full bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300">
     <div class="p-6 space-y-4 font-medium text-gray-700 mt-16">
-      <a href="#beranda" class="block hover:text-[#3F8EFC] transition">Beranda</a>
-      <a href="#tentang" class="block hover:text-[#3F8EFC] transition">Tentang Kami</a>
-      <a href="#fitur" class="block hover:text-[#3F8EFC] transition">Fitur</a>
-      <a href="#harga" class="block hover:text-[#3F8EFC] transition">Harga</a>
-      <a href="#footer" class="block hover:text-[#3F8EFC] transition">Kontak</a>
+      <a href="#beranda" class="block menu-item hover:text-[#3F8EFC]">Beranda</a>
+      <a href="#tentang" class="block menu-item hover:text-[#3F8EFC]">Tentang Kami</a>
+      <a href="#fitur" class="block menu-item hover:text-[#3F8EFC]">Fitur</a>
+      <a href="#harga" class="block menu-item hover:text-[#3F8EFC]">Harga</a>
+      <a href="#footer" class="block menu-item hover:text-[#3F8EFC]">Kontak</a>
       <div class="pt-4 border-t border-gray-200">
-        <a href="{{ route('login') }}" class="block w-full text-center px-4 py-2 gradient-bg text-white rounded-lg mb-3 hover:opacity-90 transition">Login</a>
+        <a href="{{ route('login') }}" class="block w-full text-center px-4 py-2 gradient-bg text-white rounded-lg mb-3 hover:opacity-90 transition shadow hover:shadow-md">Login</a>
         <a href="{{ route('register') }}" class="block w-full text-center px-4 py-2 border border-[#3F8EFC] text-[#3F8EFC] rounded-lg hover:bg-blue-50 transition">Register</a>
       </div>
     </div>
   </div> 
 
   <!-- HERO SECTION -->
-  <section id="beranda" class="pt-32 pb-20 bg-white">
+  <section id="beranda" class="pt-32 pb-20 bg-gradient-to-b from-white to-blue-50">
     <div class="container mx-auto px-6 lg:flex lg:items-center lg:gap-12">
       <div class="lg:w-1/2 mb-10 lg:mb-0 fade-element text-center md:text-left">
         <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-800 leading-tight">
-          BILLING MIKROTIK <br> PPPoE DAN HOTSPOT
+          BILLING MIKROTIK <br> <span class="gradient-text bg-clip-text text-transparent bg-gradient-to-r from-[#3F8EFC] to-[#6B46C1]">PPPoE DAN HOTSPOT</span>
         </h1>
         <h2 class="text-2xl md:text-3xl mb-6 text-gray-600">
           Aplikasi billing dan server radius yang powerfull
         </h2>
         <div class="flex flex-col md:flex-row justify-center md:justify-start gap-4">
-          <a href="#harga" class="px-6 py-3 gradient-bg text-white rounded-lg font-medium hover:opacity-90 transition">
+          <a href="#harga" class="px-6 py-3 gradient-bg text-white rounded-lg font-medium hover:opacity-90 transition shadow hover:shadow-md">
             Mulai Berlangganan
           </a>
           <a href="#fitur" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-100 transition">
@@ -106,13 +181,13 @@
         </div>
       </div>
       <div class="lg:w-1/2 fade-element">
-        <img src="assets/img/logotelkom.jpeg" class="w-full max-w-lg mx-auto rounded-xl shadow-lg" alt="logo bnc radius">
+        <img src="https://cdn-icons-png.flaticon.com/512/3598/3598180.png" class="w-full max-w-lg mx-auto rounded-xl shadow-lg floating" alt="logo bnc radius">
       </div>
     </div>
   </section>
 
   <!-- VALUES SECTION -->
-  <section id="tentang" class="py-16 bg-gradient-to-b from-white to-gray-50">
+  <section id="tentang" class="py-16 bg-white">
     <div class="container mx-auto px-6">
       <header class="text-center mb-12 fade-element">
         <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">Kenapa memilih kami?</h2>
@@ -130,7 +205,7 @@
 
         <div class="text-center bg-white p-8 rounded-xl shadow-sm card-hover transition-all duration-300 fade-element">
           <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mx-auto mb-6">
-            <i class="ri-cpu-fill text-3xl text-white"></i> <!-- Ganti dengan CPU untuk kesan otomatis -->
+            <i class="ri-cpu-fill text-3xl text-white"></i>
           </div>
           <h3 class="text-xl font-bold mb-3 text-gray-800">Sistem Otomatis</h3>
           <p class="text-gray-600">Tagihan, notifikasi, isolir dan pelunasan tagihan secara otomatis dengan berbagai macam metode pembayaran yang sangat lengkap dan mudah digunakan.</p>
@@ -138,7 +213,7 @@
 
         <div class="text-center bg-white p-8 rounded-xl shadow-sm card-hover transition-all duration-300 fade-element">
           <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mx-auto mb-6">
-            <i class="ri-database-2-fill text-3xl text-white"></i> <!-- Ganti dengan cloud untuk kesan data terpusat -->
+            <i class="ri-database-2-fill text-3xl text-white"></i>
           </div>
           <h3 class="text-xl font-bold mb-3 text-gray-800">Data Terpusat</h3>
           <p class="text-gray-600">Satu Aplikasi untuk banyak MikroTik. Klien Anda dapat terhubung ke jaringan dengan 1 akun dari mana saja, asalkan router sudah tersambung ke server Cloud BNC Radius.</p>
@@ -148,9 +223,9 @@
   </section>
 
   <!-- FULL SUPPORT SECTION -->
-  <section id="counts" class="py-16 bg-white">
+  <section id="counts" class="py-16 bg-gradient-to-r from-blue-50 to-indigo-50">
     <div class="container mx-auto px-6 max-w-4xl text-center fade-element">
-      <div class="bg-blue-50 p-8 md:p-10 rounded-xl">
+      <div class="bg-white p-8 md:p-10 rounded-xl shadow-sm">
         <div class="w-20 h-20 gradient-bg rounded-full flex items-center justify-center mx-auto mb-6">
           <i class="ri-customer-service-fill text-4xl text-white"></i>
         </div>
@@ -170,9 +245,8 @@
 
       <div class="flex flex-wrap items-center">
         <div class="w-full xl:w-1/3 text-center xl:text-left -mt16 fade-element">
-  <img src="assets/img/svg/fitur.svg" class="mx-auto xl:mx-0 w-full max-w-[600px] p-2" alt="fitur billing mikrotik bnc radius">
-</div>
-
+          <img src="assets/img/svg/fitur.svg" class="mx-auto xl:mx-0 w-full max-w-[600px] p-2 floating" alt="fitur billing mikrotik bnc radius">
+        </div>
 
         <div class="w-full xl:w-2/3 fade-element">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -256,25 +330,25 @@
       </header>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-[#e0f2ff] p-8 rounded-xl shadow-sm card-hover transition-all duration-300 fade-element text-center">
-          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto">
-            <i class="ri-server-fill text-3xl text-[#007BFF]"></i>
+        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-xl shadow-sm card-hover transition-all duration-300 fade-element">
+          <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mb-6 mx-auto">
+            <i class="ri-server-fill text-3xl text-white"></i>
           </div>
           <h3 class="font-semibold text-xl mb-3 text-gray-800">VPN Server</h3>
           <p class="text-gray-600">Kami menyediakan banyak server VPN yang sudah saling terkoneksi satu sama lainnya, untuk menghubungkan router pelanggan ke server utama di datacenter, server VPN pilihan dengan latency dan rute terbaik.</p>
         </div>
 
-        <div class="bg-[#fff2e0] p-8 rounded-xl shadow-sm card-hover transition-all duration-300 fade-element text-center">
-          <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto">
-            <i class="ri-database-fill text-3xl text-[#FF5733]"></i>
+        <div class="bg-gradient-to-br from-orange-50 to-pink-50 p-8 rounded-xl shadow-sm card-hover transition-all duration-300 fade-element">
+          <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mb-6 mx-auto">
+            <i class="ri-database-fill text-3xl text-white"></i>
           </div>
           <h3 class="font-semibold text-xl mb-3 text-gray-800">Server Handal</h3>
           <p class="text-gray-600">Kami memiliki server sendiri yang belokasi di Data Center Indonesia, dengan spesifikasi yang handal dan mumpuni, didukung dengan koneksi yang stabil serta sistem keamanan yang terpercaya.</p>
         </div>
 
-        <div class="bg-[#e0ffe0] p-8 rounded-xl shadow-sm card-hover transition-all duration-300 fade-element text-center">
-          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6 mx-auto">
-            <i class="ri-install-fill text-3xl text-[#28a745]"></i>
+        <div class="bg-gradient-to-br from-green-50 to-teal-50 p-8 rounded-xl shadow-sm card-hover transition-all duration-300 fade-element">
+          <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mb-6 mx-auto">
+            <i class="ri-install-fill text-3xl text-white"></i>
           </div>
           <h3 class="font-semibold text-xl mb-3 text-gray-800">Backup Otomatis</h3>
           <p class="text-gray-600">Server kami dilengkapi dengan Multi Storage Skala Enterprise dengan sistem RAID dan Mirror, backup otomatis mesin container, dan sistem recovery yang cepat untuk memastikan data Anda selalu aman.</p>
@@ -310,7 +384,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         @foreach ($pakets as $paket)
-        <div class="bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all p-8 flex flex-col justify-between border-2 border-indigo-600">
+        <div class="bg-white rounded-2xl shadow-md pricing-card p-8 flex flex-col justify-between border-2 border-indigo-600">
           <div>
             <h3 class="text-xl font-bold text-indigo-600 mb-2 text-center">BNC CLOUD {{ strtoupper($paket->nama) }}</h3>
             <div class="text-center text-3xl font-extrabold text-indigo-600 mb-4">
@@ -318,10 +392,10 @@
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/2082/2082812.png" class="w-20 mx-auto mb-6" alt="Cloud Icon">
             <ul class="text-gray-700 space-y-3 mb-6 text-sm">
-              <li class="flex items-center justify-center"><i class="fa fa-check text-green-500 mt-1 mr-2"></i> {{ $paket->mikrotik }} Router MikroTik</li>
-              <li class="flex items-center justify-center"><i class="fa fa-check text-green-500 mt-1 mr-2"></i> {{ number_format($paket->langganan, 0, ',', '.') }} Langganan</li>
-              <li class="flex items-center justify-center"><i class="fa fa-check text-green-500 mt-1 mr-2"></i> {{ number_format($paket->voucher, 0, ',', '.') }} Voucher</li>
-              <li class="flex items-center justify-center"><i class="fa fa-check text-green-500 mt-1 mr-2"></i> <span class="font-semibold text-red-500">{{ number_format($paket->user_online, 0, ',', '.') }} User Online</span></li>
+              <li class="flex items-center justify-center"><i class="ri-check-line text-green-500 mt-1 mr-2"></i> {{ $paket->mikrotik }} Router MikroTik</li>
+              <li class="flex items-center justify-center"><i class="ri-check-line text-green-500 mt-1 mr-2"></i> {{ number_format($paket->langganan, 0, ',', '.') }} Langganan</li>
+              <li class="flex items-center justify-center"><i class="ri-check-line text-green-500 mt-1 mr-2"></i> {{ number_format($paket->voucher, 0, ',', '.') }} Voucher</li>
+              <li class="flex items-center justify-center"><i class="ri-check-line text-green-500 mt-1 mr-2"></i> <span class="font-semibold text-indigo-600">{{ number_format($paket->user_online, 0, ',', '.') }} User Online</span></li>
 
               @php
                 $fiturTambahan = [
@@ -336,7 +410,7 @@
 
               @foreach ($fiturTambahan as $key => $label)
               <li class="flex items-center justify-center">
-                <i class="{{ $paket->$key ? 'fa fa-check text-green-500' : 'fa fa-times text-gray-400' }} mt-1 mr-2"></i>
+                <i class="{{ $paket->$key ? 'ri-check-line text-green-500' : 'ri-close-line text-gray-400' }} mt-1 mr-2"></i>
                 <span class="{{ $paket->$key ? '' : 'text-gray-400 line-through' }}">{{ $label }}</span>
               </li>
               @endforeach
@@ -353,47 +427,218 @@
   </div>
 </section>
 
+<!-- FAQ SECTION -->
+<section id="faq" class="py-16 bg-white">
+  <div class="container mx-auto px-6 max-w-6xl">
+    <header class="text-center mb-12 fade-element">
+      <span class="inline-block px-3 py-1 text-xs font-semibold text-[#3F8EFC] bg-blue-100 rounded-full mb-3">
+        PERTANYAAN UMUM
+      </span>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">FAQ</h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">Pertanyaan yang Sering Diajukan</p>
+    </header>
 
-  <!-- Footer -->
-  <footer id="footer" class="bg-gray-800 text-gray-300 py-12">
-    <div class="container mx-auto px-6">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-        <div>
-          <h2 class="text-xl font-bold text-white mb-4 flex items-center">
-            PT BORNEO NETWORK CENTER
-          </h2>
-          <p class="mb-4">Jl. Palm Raya, Ruko No. 6, RT 50 RW 07, Kel. Guntung Manggis, Landasan Ulin, Banjarbaru, Kalimantan Selatan, Indonesia</p>
-          <div class="flex space-x-4">
-            <a href="#" class="hover:text-white transition"><i class="ri-phone-fill"></i></a>
-            <a href="#" class="hover:text-white transition"><i class="ri-mail-fill"></i></a>
-          </div>
-        </div>
-        <div>
-          <h3 class="text-lg font-semibold text-white mb-4">Sosial Media</h3>
-          <div class="flex space-x-4">
-            <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-[#1DA1F2] hover:text-white transition">
-              <i class="ri-twitter-fill"></i>
-            </a>
-            <a href="https://www.facebook.com/groups/rlradius" target="_blank" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-[#1877F2] hover:text-white transition">
-              <i class="ri-facebook-fill"></i>
-            </a>
-            <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gradient-to-r from-[#F58529] via-[#DD2A7B] to-[#8134AF] hover:text-white transition">
-              <i class="ri-instagram-line"></i>
-            </a>
-            <a href="https://www.youtube.com/watch?v=jnuILVPfKPg&list=PLVA91M9nFgixqwiNllm6CT9IPb8iFyFFl" target="_blank" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-[#FF0000] hover:text-white transition">
-              <i class="ri-youtube-fill"></i>
-            </a>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Item FAQ -->
+      <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100">
+        <button class="accordion-button collapsed w-full flex justify-between items-center p-5 text-left hover:bg-gray-50 transition" type="button">
+          <span>Apa yang dimaksud dengan RL Radius?</span>
+          <i class="text-[#3F8EFC] transition-transform duration-300"></i>
+        </button>
+        <div class="accordion-body px-5">
+          <div class="pb-5 text-gray-600">
+            RL Radius merupakan aplikasi billing untuk Mikrotik (PPPoE, DHCP, dan Hotspot) yang dikembangkan menggunakan PHP dan sistem Radius.
           </div>
         </div>
       </div>
-      <div class="border-t border-gray-700 pt-6 text-center text-sm">
-        &copy; 2025 <strong class="text-white">PT BORNEO NETWORK CENTER</strong>. All Rights Reserved.
+
+      <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100">
+        <button class="accordion-button collapsed w-full flex justify-between items-center p-5 text-left hover:bg-gray-50 transition" type="button">
+          <span>Apakah dapat digabungkan dengan aplikasi lain?</span>
+          <i class="text-[#3F8EFC] transition-transform duration-300"></i>
+        </button>
+        <div class="accordion-body px-5">
+          <div class="pb-5 text-gray-600">
+            Ya, RL Radius dapat digabungkan dengan aplikasi lain yang bukan berbasis radius, seperti Mikhmon atau Mikrostator.
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100">
+        <button class="accordion-button collapsed w-full flex justify-between items-center p-5 text-left hover:bg-gray-50 transition" type="button">
+          <span>Apakah perlu menyetel ulang perangkat Mikrotik?</span>
+          <i class="text-[#3F8EFC] transition-transform duration-300"></i>
+        </button>
+        <div class="accordion-body px-5">
+          <div class="pb-5 text-gray-600">
+            Tidak perlu. Cukup menambahkan konfigurasi tambahan untuk menghubungkan Mikrotik ke server RL Radius.
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100">
+        <button class="accordion-button collapsed w-full flex justify-between items-center p-5 text-left hover:bg-gray-50 transition" type="button">
+          <span>Apakah layanan VPN dapat digunakan untuk keperluan remote?</span>
+          <i class="text-[#3F8EFC] transition-transform duration-300"></i>
+        </button>
+        <div class="accordion-body px-5">
+          <div class="pb-5 text-gray-600">
+            Ya, layanan VPN dapat digunakan untuk keperluan remote perangkat, minimal menggunakan paket Cloud Premium.
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100">
+        <button class="accordion-button collapsed w-full flex justify-between items-center p-5 text-left hover:bg-gray-50 transition" type="button">
+          <span>Apakah pelanggan memperoleh source code aplikasi?</span>
+          <i class="text-[#3F8EFC] transition-transform duration-300"></i>
+        </button>
+        <div class="accordion-body px-5">
+          <div class="pb-5 text-gray-600">
+            Tidak. Layanan yang disediakan bersifat sewa penggunaan aplikasi, tidak termasuk kepemilikan atas source code.
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100">
+        <button class="accordion-button collapsed w-full flex justify-between items-center p-5 text-left hover:bg-gray-50 transition" type="button">
+          <span>Apakah dana akan dikembalikan apabila saya berhenti berlangganan?</span>
+          <i class="text-[#3F8EFC] transition-transform duration-300"></i>
+        </button>
+        <div class="accordion-body px-5">
+          <div class="pb-5 text-gray-600">
+            Mohon maaf, seluruh transaksi yang telah dilakukan bersifat final dan tidak dapat dikembalikan.
+          </div>
+        </div>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
+
+
+  <!-- CTA SECTION -->
+  <section class="py-16 gradient-bg relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+    
+    <div class="container mx-auto px-6 text-center fade-element">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Siap meningkatkan bisnis ISP Anda?</h2>
+      <p class="text-lg text-white/90 max-w-2xl mx-auto mb-8">Bergabunglah dengan ratusan ISP yang telah mempercayakan manajemen jaringan mereka pada BNC Radius</p>
+      <div class="flex flex-col md:flex-row justify-center gap-4">
+        <a href="{{ route('register') }}" class="px-6 py-3 bg-white text-[#3F8EFC] rounded-lg font-medium hover:bg-gray-100 transition shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+          <i class="ri-user-add-line"></i> Daftar Sekarang
+        </a>
+        <a href="#footer" class="px-6 py-3 border border-white text-white rounded-lg font-medium hover:bg-white/10 transition flex items-center justify-center gap-2">
+          <i class="ri-customer-service-line"></i> Hubungi Kami
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+<footer id="footer" class="bg-gray-900 text-gray-300 pt-16 pb-8">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      
+      <!-- Kolom 1: Alamat & Kontak -->
+      <div>
+        <h2 class="text-xl font-bold text-white mb-4 flex items-center">
+          <span class="gradient-text bg-gradient-to-r">PT BORNEO NETWORK CENTER</span>
+        </h2>
+        <p class="mb-4">
+          Jl. Palm Raya, Ruko No. 6, RT 50 RW 07, Kel. Guntung Manggis, Landasan Ulin, Banjarbaru, Kalimantan Selatan, Indonesia
+        </p>
+        <div class="flex space-x-4">
+          <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#3F8EFC] hover:text-white transition">
+            <i class="ri-phone-fill"></i>
+          </a>
+          <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#6B46C1] hover:text-white transition">
+            <i class="ri-mail-fill"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Kolom 2: Navigasi Perusahaan -->
+      <div>
+        <h3 class="text-lg font-semibold text-white mb-4">Perusahaan</h3>
+        <ul class="space-y-2">
+          <li><a href="#tentang" class="hover:text-white transition">Tentang Kami</a></li>
+          <li><a href="#fitur" class="hover:text-white transition">Fitur</a></li>
+          <li><a href="#harga" class="hover:text-white transition">Harga</a></li>
+        </ul>
+      </div>
+
+      <!-- Kolom 3 (Opsional Dukungan, nonaktif sementara) -->
+      <!--
+      <div>
+        <h3 class="text-lg font-semibold text-white mb-4">Dukungan</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:text-white transition">Dokumentasi</a></li>
+          <li><a href="#" class="hover:text-white transition">Panduan</a></li>
+          <li><a href="#" class="hover:text-white transition">FAQ</a></li>
+          <li><a href="#" class="hover:text-white transition">Bantuan</a></li>
+        </ul>
+      </div>
+      -->
+
+      <!-- Kolom 4: Sosial Media -->
+      <div>
+        <h3 class="text-lg font-semibold text-white mb-4">Sosial Media</h3>
+        <div class="flex space-x-3">
+          <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#1DA1F2] hover:text-white transition">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a href="https://www.facebook.com/groups/rlradius" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#1877F2] hover:text-white transition">
+            <i class="ri-facebook-fill"></i>
+          </a>
+          <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gradient-to-r from-[#F58529] via-[#DD2A7B] to-[#8134AF] hover:text-white transition">
+            <i class="ri-instagram-line"></i>
+          </a>
+          <a href="https://www.youtube.com/watch?v=jnuILVPfKPg&list=PLVA91M9nFgixqwiNllm6CT9IPb8iFyFFl" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#FF0000] hover:text-white transition">
+            <i class="ri-youtube-fill"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Bawah -->
+    <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
+      <div class="text-center md:text-left mb-4 md:mb-0">
+        &copy; 2025 <strong class="text-white">PT BORNEO NETWORK CENTER</strong>. All Rights Reserved.
+      </div>
+      <div class="flex space-x-6">
+        <button onclick="openModal('terms')" class="text-sm hover:text-white transition">Terms</button>
+        <button onclick="openModal('privacy')" class="text-sm hover:text-white transition">Privacy</button>
+        <button onclick="openModal('cookies')" class="text-sm hover:text-white transition">Cookies</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+<!-- Modal -->
+<div id="modalOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden justify-center items-center">
+  <div class="bg-white w-[90%] md:w-1/2 lg:w-1/3 p-6 rounded-xl shadow-xl relative" onclick="event.stopPropagation()">
+    
+    <!-- Tombol Close -->
+    <button onclick="closeModal()" class="absolute top-3 right-3 text-gray-600 hover:text-red-500 text-xl font-bold">&times;</button>
+
+    <!-- Konten Modal Dinamis -->
+    <div id="modalContent" class="text-gray-800 space-y-4 text-sm leading-relaxed">
+      <!-- Akan diisi via JavaScript -->
+    </div>
+
+    <!-- Tombol Aksi -->
+    <div class="mt-6 text-right">
+      <button onclick="closeModal()" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 mr-2">Tutup</button>
+    </div>
+  </div>
+</div>
+
 
   <!-- Back to top button -->
-  <a href="#beranda" id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-[#3F8EFC] text-white rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-[#2d7be8]">
+  <a href="#beranda" id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 gradient-bg text-white rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 hover:shadow-xl hover:scale-105">
     <i class="ri-arrow-up-line text-xl"></i>
   </a>
 
@@ -404,7 +649,6 @@
   const header = document.getElementById('mainHeader');
   window.addEventListener("scroll", () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    //header.style.transform = scrollTop > lastScrollTop && scrollTop > 80 ? "translateY(-100%)" : "translateY(0)";
     header.style.transform = "translateY(0)";
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
     
@@ -484,6 +728,53 @@
         });
       }
     });
+  });
+
+  // FAQ Accordion
+  const accordionButtons = document.querySelectorAll('.accordion-button');
+  accordionButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const accordionItem = button.parentElement;
+      const accordionBody = button.nextElementSibling;
+      
+      // Toggle collapsed class on button
+      button.classList.toggle('collapsed');
+      
+      // Toggle accordion body
+      if (button.classList.contains('collapsed')) {
+        accordionBody.style.maxHeight = '0';
+      } else {
+        accordionBody.style.maxHeight = accordionBody.scrollHeight + 'px';
+      }
+    });
+  });
+
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalContent = document.getElementById('modalContent');   
+
+  const content = {
+    terms: `<h2 class="text-lg font-bold">Syarat & Ketentuan</h2>
+            <p>Dengan menggunakan layanan ini, Anda setuju untuk mematuhi semua aturan yang berlaku.</p>`,
+    privacy: `<h2 class="text-lg font-bold">Kebijakan Privasi</h2>
+              <p>Kami menghormati privasi Anda dan hanya mengumpulkan data seperlunya.</p>`,
+    cookies: `<h2 class="text-lg font-bold">Kebijakan Cookies</h2>
+              <p>Website ini menggunakan cookies untuk meningkatkan pengalaman pengguna.</p>`
+  };
+
+  function openModal(type) {
+    modalContent.innerHTML = content[type];
+    modalOverlay.classList.remove('hidden');
+    modalOverlay.classList.add('flex');
+  }
+
+  function closeModal() {
+    modalOverlay.classList.add('hidden');
+    modalOverlay.classList.remove('flex');
+  }
+
+  // Klik di luar modal akan menutupnya
+  modalOverlay.addEventListener('click', function(e) {
+    if (e.target === modalOverlay) closeModal();
   });
 </script>
 </body>
