@@ -24,5 +24,6 @@ class ProfileVoucher extends Model
         'masa_aktif_satuan',
         'hjk',
         'komisi',
+        'hpp',
     ];
 }

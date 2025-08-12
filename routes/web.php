@@ -9,6 +9,7 @@ use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\ProfileVoucherController;
 use App\Http\Controllers\ResellerController;
+use App\Http\Controllers\StokVoucherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,6 +86,24 @@ Route::middleware(['auth', CheckLevel::class . ':admin'])->group(function () {
     Route::get('/voucher/{id}/edit', [ProfileVoucherController::class, 'edit'])->name('voucher.edit');
     Route::put('/voucher/{id}', [ProfileVoucherController::class, 'update'])->name('voucher.update');
     Route::delete('/voucher/{id}', [ProfileVoucherController::class, 'destroy'])->name('voucher.delete');
+
+
+    Route::get('/stokvoucher', [StokVoucherController::class, 'index'])->name('stokvoucher.index');
+    Route::get('/stokvoucher/create', [StokVoucherController::class, 'create'])->name('stokvoucher.create');
+    Route::post('/stokvoucher/store', [StokVoucherController::class, 'store'])->name('stokvoucher.store');
+    Route::get('/stokvoucher/{id}/edit', [StokVoucherController::class, 'edit'])->name('stokvoucher.edit');
+    Route::put('/stokvoucher/{id}', [StokVoucherController::class, 'update'])->name('stokvoucher.update');
+    Route::delete('/stokvoucher/{id}', [StokVoucherController::class, 'destroy'])->name('stokvoucher.delete');
+
+    // routes/web.php
+Route::get('/api/reseller/{id}', function ($id) {
+    return \App\Models\Reseller::findOrFail($id);
+});
+
+Route::get('/api/profile-voucher/{id}', function ($id) {
+    return \App\Models\ProfileVoucher::findOrFail($id);
+});
+
 
 
 

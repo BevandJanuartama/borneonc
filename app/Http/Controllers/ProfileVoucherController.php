@@ -29,6 +29,7 @@ class ProfileVoucherController extends Controller
             'masa_aktif' => 'nullable|integer|min:1',
             'hjk' => 'nullable|numeric|min:0',
             'komisi' => 'nullable|numeric|min:0',
+            'hpp' => 'nullable|numeric|min:0', // ✅ Validasi HPP
         ]);
 
         $hasil = ProfileVoucher::create($validated + [
@@ -41,6 +42,8 @@ class ProfileVoucherController extends Controller
         ]);
 
         return redirect()->route('voucher.index')->with('success', 'Profile voucher berhasil ditambahkan.');
+
+
 
         // return response()->json([
         // "status" => 202,
@@ -64,11 +67,11 @@ class ProfileVoucherController extends Controller
 
         return redirect()->route('voucher.index')->with('success', 'Profile voucher berhasil diperbarui.');
 
-        return response()->json([
-        "status" => 202,
-        "message" => "Success",
-        "data" => $hasil
-        ]);
+        // return response()->json([
+        // "status" => 202,
+        // "message" => "Success",
+        // "data" => $hasil
+        // ]);
     }
 
     public function destroy($id)

@@ -31,6 +31,7 @@ return new class extends Migration
 
             $table->decimal('hjk', 15, 2)->default(0); // harga jual ke konsumen
             $table->decimal('komisi', 15, 2)->default(0); // komisi reseller per voucher
+            $table->decimal('hpp', 15, 2)->default(0);
 
             $table->timestamps();
         });

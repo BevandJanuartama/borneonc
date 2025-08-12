@@ -99,6 +99,12 @@
                 </div>
 
                 <div class="col-lg-6">
+                    <label class="form-label">Harga Pokok Penjualan (HPP)</label>
+                    <input type="number" class="form-control" name="hpp" value="0" required>
+                </div>
+
+
+                <div class="col-lg-6">
                     <label class="form-label">Komisi</label>
                     <input type="number" class="form-control" name="komisi" value="0" required>
                 </div>
