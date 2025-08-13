@@ -82,7 +82,7 @@
 
         <!-- Router -->
         <li>
-          <a href="/router"
+          <a href="/routers"
             class="menu-item flex items-center space-x-3 p-3 rounded-lg 
             {{ Request::is('router*') ? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
             <i class="fas fa-network-wired w-5"></i><span>Router</span>
@@ -93,7 +93,7 @@
         <li>
           <a href="/reseller"
             class="menu-item flex items-center space-x-3 p-3 rounded-lg 
-            {{ Request::is('mitra*') ? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
+            {{ Request::is('reseller*') || request()->is('reseller/create*')? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
             <i class="fas fa-handshake w-5"></i><span>Mitra</span>
           </a>
         </li>
@@ -109,18 +109,18 @@
                 </span>
                 <i class="fas fa-chevron-down"></i>
             </button>
-            <ul id="voucherMenu" class="ml-8 mt-1 {{ request()->is('voucher*') || request()->is('stokvoucher*') ? '' : 'hidden' }} space-y-1">
+            <ul id="voucherMenu" class="ml-8 mt-1 {{ request()->is('voucher*') || request()->is('voucher/create*') || request()->is('stokvoucher*') || request()->is('stokvoucher/create*') ? '' : 'hidden' }} space-y-1">
                 <li>
                     <a href="{{ route('voucher.index') }}"
                         class="menu-item block p-2 rounded-lg 
-                        {{ request()->is('voucher') ? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
+                        {{ request()->is('voucher') || request()->is('voucher/create*')? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
                         Profile Voucher
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('stokvoucher.index') }}"
                         class="menu-item block p-2 rounded-lg 
-                        {{ request()->is('stokvoucher') ? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
+                        {{ request()->is('stokvoucher') || request()->is('stokvoucher/create*')? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
                         Stok Voucher
                     </a>
                 </li>

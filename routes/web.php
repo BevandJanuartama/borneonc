@@ -9,6 +9,7 @@ use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\ProfileVoucherController;
 use App\Http\Controllers\ResellerController;
+use App\Http\Controllers\RouterController;
 use App\Http\Controllers\StokVoucherController;
 
 /*
@@ -94,6 +95,13 @@ Route::middleware(['auth', CheckLevel::class . ':admin'])->group(function () {
     Route::get('/stokvoucher/{id}/edit', [StokVoucherController::class, 'edit'])->name('stokvoucher.edit');
     Route::put('/stokvoucher/{id}', [StokVoucherController::class, 'update'])->name('stokvoucher.update');
     Route::delete('/stokvoucher/{id}', [StokVoucherController::class, 'destroy'])->name('stokvoucher.delete');
+
+    Route::resource('routers', RouterController::class);
+    Route::get('routers/{id}/download', [RouterController::class, 'downloadScript'])->name('routers.download'); 
+    Route::get('routers/{id}/snmp', [RouterController::class, 'checkSnmp'])->name('routers.snmp');
+
+    // Route::get('/routers', [RouterController::class, 'index'])->name('routers.index'); 
+
 
     // routes/web.php
 Route::get('/api/reseller/{id}', function ($id) {
