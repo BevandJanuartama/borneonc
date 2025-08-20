@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log Aplikasi</title>
-
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- FontAwesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 </head>
-<body class="bg-light">
+<body class="bg-light text-black">
 
-<div class="page-content p-4">
+    <!-- Sidebar -->
+    @include('layouts.subadminbar')
+
+<div class="page-content p-4 ml-64">
 
     <!-- start page title -->
     <div class="page-title-box mb-4">
@@ -63,7 +62,7 @@
                     <table id="tableData" class="table table-bordered table-hover text-nowrap table-dark">
                         <thead>
                         <tr>
-                            <th>#</th>
+                            <th>NO</th>
                             <th>NAMA LENGKAP</th>
                             <th>IP ADDRESS</th>
                             <th>INFO AKTIFITAS</th>
@@ -77,7 +76,7 @@
                                     <td>{{ $log->nama_lengkap }}</td>
                                     <td>{{ $log->ip_address }}</td>
                                     <td>{{ $log->info_aktifitas }}</td>
-                                    <td>{{ $log->created_at }}</td>
+                                    <td>{{ $log->tanggal_kejadian }}</td>
                                 </tr>
                             @empty
                                 <tr>
@@ -100,7 +99,7 @@
 <!-- Modal isi log -->
 <div class="modal fade" id="modalLog" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content text-dark">
+        <div class="modal-content text-light">
             <div class="modal-body">
                 <div class="col-lg-12">
                     <label class="form-label">INFO AKTIFITAS</label>
@@ -119,11 +118,7 @@
 <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 
-<script>
-$(document).ready(function() {
-    $('#tableData').DataTable();
-});
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
 </body>
 </html>

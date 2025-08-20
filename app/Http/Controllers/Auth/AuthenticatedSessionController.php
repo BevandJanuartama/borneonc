@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Illuminate\Validation\ValidationException;
+use App\Models\Log;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -51,6 +52,14 @@ class AuthenticatedSessionController extends Controller
 
         // Ambil user yang sudah login
         $user = Auth::user();
+
+        // Simpan log login
+        Log::create([
+            'nama_lengkap'     => $user->nama ?? $user->telepon, // sesuaikan kolom yang ada di tabel users
+            'ip_address'       => $request->ip(),
+            'info_aktifitas'   => 'Berhasil login ke aplikasi',
+            'tanggal_kejadian' => now(),
+        ]);
 
         // Redirect berdasarkan level
         if ($user->level === 'admin') {

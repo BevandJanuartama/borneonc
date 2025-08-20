@@ -7,10 +7,12 @@ use App\Http\Middleware\CheckLevel;
 use App\Models\Paket;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\LogController;
 use App\Http\Controllers\ProfileVoucherController;
 use App\Http\Controllers\ResellerController;
 use App\Http\Controllers\RouterController;
 use App\Http\Controllers\StokVoucherController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -100,7 +102,17 @@ Route::middleware(['auth', CheckLevel::class . ':admin'])->group(function () {
     Route::get('routers/{id}/download', [RouterController::class, 'downloadScript'])->name('routers.download'); 
     Route::get('routers/{id}/snmp', [RouterController::class, 'checkSnmp'])->name('routers.snmp');
 
+    Route::get('/dashboard', fn () => view('admin-sub.dashboard'))->name('admin-sub.dashboard');
+
+    // Route::get('/log', fn () => view('admin-sub.log'))->name('admin-sub.log');
+
+
     // Route::get('/routers', [RouterController::class, 'index'])->name('routers.index'); 
+    Route::get('/log', [LogController::class, 'index'])->name('log.index');
+
+    Route::delete('/log/destroy-all', [LogController::class, 'destroyAll'])->name('log.destroyAll');
+
+    
 
 
     // routes/web.php
@@ -115,9 +127,9 @@ Route::get('/api/profile-voucher/{id}', function ($id) {
 
 
 
-Route::get('/dashboard', function () {
-    return redirect()->route('admin.dashboard');
-})->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return redirect()->route('admin.dashboard');
+// })->name('dashboard');
 
 
 

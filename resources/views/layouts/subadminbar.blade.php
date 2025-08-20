@@ -128,13 +128,13 @@
         </li>
 
         <!-- Tiket -->
-        <li>
+        {{-- <li>
           <a href="/tiket"
             class="menu-item flex items-center space-x-3 p-3 rounded-lg 
             {{ Request::is('tiket*') ? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
             <i class="fas fa-envelope-open-text w-5"></i><span>Tiket</span>
           </a>
-        </li>
+        </li> --}}
 
         <!-- Transaksi -->
         <li>
@@ -165,9 +165,9 @@
 
         <!-- Logs -->
         <li>
-          <a href="/logs"
+          <a href="/log"
             class="menu-item flex items-center space-x-3 p-3 rounded-lg 
-            {{ Request::is('logs*') ? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
+            {{ Request::is('log*') ? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
             <i class="fas fa-history w-5"></i><span>Logs</span>
           </a>
         </li>
