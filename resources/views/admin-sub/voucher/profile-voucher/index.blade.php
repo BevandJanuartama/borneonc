@@ -14,13 +14,15 @@
 
     <!-- Konten -->
     <div class="container-fluid py-4" style="margin-left: 250px;">
-        <h2 class="mb-4">PROFILE VOUCHER</h2>
+        <header class="text-center mb-14 border-b pb-6 border-indigo-200">
+            <h2 class="text-4xl font-bold text-gray-800">Profile Voucher</h2>
+        </header>
 
-        <div class="mb-3">
+        <div class="mb-3 pl-3">
             <a href="{{ route('voucher.create') }}" class="btn btn-primary">+ Tambah Profile Voucher</a>
         </div>
 
-        <div class="card shadow-sm">
+        <div class="card shadow-sm ">
             <div class="card-body">
                 <table id="voucherTable" class="table table-bordered table-striped align-middle">
                     <thead class="table-dark">

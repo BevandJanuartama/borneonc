@@ -42,8 +42,11 @@
       <main class="md:pl-72 pt-20 w-full p-8">
         <!-- Header -->
         <div class="mb-8">
-            <h2 class="text-3xl font-bold text-gray-800">Instance Saya</h2>
-            <p class="text-gray-600 mt-1">Kelola dan pantau semua instance yang Anda miliki.</p>
+            <header class="text-center mb-14 border-b pb-6 border-indigo-200">
+                <h2 class="text-4xl font-bold text-gray-800">Instance Saya</h2>
+                <p class="text-gray-600 mt-1">Kelola dan pantau semua instance yang Anda miliki.</p>    
+            </header>
+            <h2 class="text-3xl font-bold text-gray-800"></h2>
         </div>
 
         <!-- Action Card -->

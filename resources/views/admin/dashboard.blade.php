@@ -50,8 +50,8 @@
     <!-- Section 1 -->
     <section id="harga" class="py-20">
       <div class="container mx-auto px-4">
-        <header class="text-center mb-14">
-          <h2 class="text-4xl font-bold text-gray-800 mb-2">ini halamaan dashboard admin</h2>
+        <header class="text-center mb-14 border-b pb-6 border-indigo-200">
+          <h2 class="text-4xl font-bold text-gray-800">Halaman Dashboard</h2>
         </header>
       </div>
     </section>

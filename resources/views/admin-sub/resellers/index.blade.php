@@ -12,7 +12,10 @@
     @include('layouts.subadminbar')
 
     <div class="p-6 sm:ml-64">
-        <h3 class="text-2xl font-semibold mb-3">MITRA</h3>
+        <header class="text-center mb-14 border-b pb-6 border-indigo-200">
+            <h2 class="text-4xl font-bold text-gray-800">Daftar Mitra</h2>
+        </header>
+        
         <p class="text-gray-500 text-sm mb-4">
             Saldo yang diawali tanda minus (-) menandakan mitra berhutang sejumlah minus -saldo,
             dan mitra dapat melakukan transaksi ketika saldo 0/minus sampai batas maksimal limit hutang.<br>

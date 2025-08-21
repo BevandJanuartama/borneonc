@@ -10,8 +10,7 @@ class StokVoucherController extends Controller
 {
     public function index()
     {
-        $stokVouchers = StokVoucher::with(['reseller', 'profileVoucher'])
-            ->paginate(10); // <-- 10 data per halaman
+        $stokVouchers = StokVoucher::with(['reseller', 'profileVoucher'])->get();
         return view('admin-sub.voucher.stok-voucher.index', compact('stokVouchers'));
     }
 

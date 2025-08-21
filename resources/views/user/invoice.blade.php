@@ -1,52 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Instances - BNC CLOUD MANAGER</title>
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <style>
-    .sidebar-gradient {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
-    .card-hover {
-      transition: all 0.3s ease;
-    }
-    .card-hover:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    }
-    .menu-item {
-      transition: all 0.3s ease;
-    }
-    .menu-item:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateX(5px);
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Invoice List</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/custom.css">
+  <link rel="stylesheet" href="/assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 </head>
-<body class="bg-gray-50 flex min-h-screen">
-
-  <!-- Sidebar -->
-  @include('layouts.sidebar')
-
-  <!-- Main Content -->
-      <main class="md:pl-72 pt-20 w-full p-8">
-
-  <!-- Harga Section -->
-  <section id="harga" class="py-20 w-full">
-    <div class="container mx-auto px-4">
-      <header class="text-center mb-14">
-        <h2 class="text-4xl font-bold text-gray-800 mb-2">ini halamaan invoice</h2>
-      </header>
+<body>
+  <div class="container">
+    <h1>Invoice List</h1>
+    <div class="alert alert-info">
+      <h3>Attention!</h3>
+      <ul>
+        <li>Click on any invoice to view the details!</li>
+        <li>Payments for completed invoices cannot be canceled or refunded.</li>
+      </ul>
     </div>
-  </section>
-
+    <table id="invoiceTable" class="table table-hover">
+      <thead>
+        <tr>
+          <th>Invoice</th>
+          <th>Type</th>
+          <th>Instance</th>
+          <th>Company</th>
+          <th>Date Issued</th>
+          <th>Due Date</th>
+          <th>Payment Date</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Sample Data -->
+        <tr onclick="window.location.href='/invoice/1'">
+          <td>INV001</td>
+          <td>Registration</td>
+          <td>Instance 1</td>
+          <td>Company A</td>
+          <td>2025-08-01</td>
+          <td>2025-08-15</td>
+          <td>2025-08-10</td>
+          <td>100,000</td>
+        </tr>
+        <tr onclick="window.location.href='/invoice/2'">
+          <td>INV002</td>
+          <td>Subscription</td>
+          <td>Instance 2</td>
+          <td>Company B</td>
+          <td>2025-08-05</td>
+          <td>2025-08-20</td>
+          <td>2025-08-15</td>
+          <td>200,000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script src="/assets/plugins/jquery/jquery.min.js"></script>
+  <script src="/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#invoiceTable').DataTable();
+    });
+  </script>
 </body>
 </html>

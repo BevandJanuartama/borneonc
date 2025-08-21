@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Log;
+use App\Models\Info;
 use Illuminate\Http\Request;
 
-class LogController extends Controller
+class InfoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $logs = Log::orderBy('tanggal_kejadian', 'desc')->paginate(10);
-        return view('admin-sub.log', compact('logs'));
+        $infos = Info::orderBy('tanggal_kejadian', 'desc')->paginate(10);
+        return view('admin-sub.info', compact('infos'));
     }
 
 
@@ -36,7 +36,7 @@ class LogController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Log $log)
+    public function show(Info $info)
     {
         //
     }
@@ -44,7 +44,7 @@ class LogController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Log $log)
+    public function edit(Info $info)
     {
         //
     }
@@ -52,7 +52,7 @@ class LogController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Log $log)
+    public function update(Request $request, Info $info)
     {
         //
     }
@@ -63,9 +63,9 @@ class LogController extends Controller
     public function destroyAll()
     {
         // Hapus semua log dan reset auto-increment
-        \App\Models\Log::truncate();
+        \App\Models\Info::truncate();
 
-        return redirect()->route('log.index')
+        return redirect()->route('info.index')
                         ->with('success', 'Semua log berhasil dihapus');
     }
 }

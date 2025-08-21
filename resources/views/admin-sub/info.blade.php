@@ -33,7 +33,7 @@
 
                 <div class="row">
                     <div class="col-md-7">
-                        <form action="{{ route('log.destroyAll') }}" method="POST" 
+                        <form action="{{ route('info.destroyAll') }}" method="POST" 
                               onsubmit="return confirm('Kosongkan semua log?')">
                             @csrf
                             @method('DELETE')
@@ -44,7 +44,7 @@
                     </div>
 
                     <div class="mb-2 mt-3 col-md-5">
-                        <form action="{{ route('log.index') }}" method="GET">
+                        <form action="{{ route('info.index') }}" method="GET">
                             <div class="row">
                                 <label class="col-md-5 col-form-label text-end">FILTER TANGGAL</label>
                                 <div class="col-md-7">
@@ -70,13 +70,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @forelse($logs as $log)
+                            @forelse($infos as $info)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $log->nama_lengkap }}</td>
-                                    <td>{{ $log->ip_address }}</td>
-                                    <td>{{ $log->info_aktifitas }}</td>
-                                    <td>{{ $log->tanggal_kejadian }}</td>
+                                    <td>{{ $info->nama_lengkap }}</td>
+                                    <td>{{ $info->ip_address }}</td>
+                                    <td>{{ $info->info_aktifitas }}</td>
+                                    <td>{{ $info->tanggal_kejadian }}</td>
                                 </tr>
                             @empty
                                 <tr>
@@ -86,7 +86,7 @@
                         </tbody>
                     </table>
                     <div class="mt-3">
-                        {{ $logs->links('pagination::bootstrap-5') }}
+                        {{ $infos->links('pagination::bootstrap-5') }}
                     </div>
                 </div>
 

@@ -70,8 +70,8 @@
       </div> --}}
 
       <nav class="p-4">
-      <ul class="space-y-2">
-        <!-- Dashboard -->
+        <ul class="space-y-2">
+          <!-- Dashboard -->
         <li>
           <a href="/dashboard"
             class="menu-item flex items-center space-x-3 p-3 rounded-lg 
@@ -145,12 +145,12 @@
           </a>
         </li>
 
-        <!-- Setting -->
+        <!-- Info -->
         <li>
-          <a href="/setting"
+          <a href="/info"
             class="menu-item flex items-center space-x-3 p-3 rounded-lg 
-            {{ Request::is('setting*') ? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
-            <i class="fas fa-cog w-5"></i><span>Setting</span>
+            {{ Request::is('info*') ? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
+            <i class="fas fa-info-circle w-5"></i><span>Info</span>
           </a>
         </li>
 
@@ -163,15 +163,6 @@
           </a>
         </li>
 
-        <!-- Logs -->
-        <li>
-          <a href="/log"
-            class="menu-item flex items-center space-x-3 p-3 rounded-lg 
-            {{ Request::is('log*') ? 'text-white bg-white/10' : 'text-white/80 hover:text-white' }}">
-            <i class="fas fa-history w-5"></i><span>Logs</span>
-          </a>
-        </li>
-
         <!-- Logout -->
         <li class="pt-4 border-t border-white/20 mt-4">
           <form method="POST" action="{{ route('logout') }}">
@@ -181,15 +172,9 @@
             </button>
           </form>
         </li>
-      </ul>
-    </nav>
-
-    <script>
-      function toggleSubmenu(id) {
-        document.getElementById(id).classList.toggle('hidden');
-      }
-    </script>
-
+        </ul>
+      </nav>
+    </div>
 
     <!-- Footer Sidebar -->
     <div class="text-white text-xs px-6 py-4 border-t border-white/20">
@@ -230,4 +215,3 @@
 
 </body>
 </html>
-

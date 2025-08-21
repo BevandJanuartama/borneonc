@@ -35,10 +35,12 @@
 
     <div class="p-6 sm:ml-64">
         <div class="bg-white rounded-lg shadow p-4">
-            <h1 class="text-xl font-semibold mb-4">Daftar Router</h1>
+            <header class="text-center mb-14 border-b pb-6 border-indigo-200">
+                <h2 class="text-4xl font-bold text-gray-800">Daftar Router</h2>
+            </header>
 
             <a href="{{ route('routers.create') }}" 
-               class="px-4 py-2 mb-3 inline-block bg-blue-600 hover:bg-blue-700 text-white text-sm rounded">
+               class="px-4 py-2 mb-3 inline-block bg-blue-600 hover:bg-blue-700 text-white text-sm rounded ">
                 Tambah Router
             </a>
 
