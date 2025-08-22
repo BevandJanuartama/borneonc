@@ -40,7 +40,7 @@
             </header>
 
             <a href="{{ route('routers.create') }}" 
-               class="px-4 py-2 mb-3 inline-block bg-blue-600 hover:bg-blue-700 text-white text-sm rounded">
+               class="px-4 py-2 mb-3 inline-block bg-blue-600 hover:bg-blue-700 text-white text-sm rounded ">
                 Tambah Router
             </a>
 
@@ -54,7 +54,6 @@
                             <th class="px-4 py-3 border">Secret</th>
                             <th class="px-4 py-3 border">Online</th>
                             <th class="px-4 py-3 border">Script</th>
-                            <th class="px-4 py-3 border">OVPN</th> <!-- ✅ Tambahan -->
                             <th class="px-4 py-3 border">SNMP</th>
                         </tr>
                     </thead>
@@ -84,20 +83,6 @@
                                        class="px-3 py-1 text-xs bg-blue-600 hover:bg-blue-700 text-white rounded">
                                         Download
                                     </a>
-                                </td>
-                                <td class="px-4 py-2 border">
-                                    @if($router->ovpn_path)
-                                        <a href="{{ route('routers.download.ovpn', $router->id) }}" 
-                                           class="px-3 py-1 text-xs bg-purple-600 hover:bg-purple-700 text-white rounded">
-                                           Download
-                                        </a>
-                                        <a href="{{ route('routers.view.ovpn', $router->id) }}" 
-                                           class="px-3 py-1 text-xs bg-gray-600 hover:bg-gray-700 text-white rounded">
-                                           View
-                                        </a>
-                                    @else
-                                        <span class="text-gray-400 text-xs">-</span>
-                                    @endif
                                 </td>
                                 <td class="px-4 py-2 border text-center">
                                     @if($router->snmp_status)
