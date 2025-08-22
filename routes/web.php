@@ -112,6 +112,9 @@ Route::delete('/stokvoucher/{id}', [StokVoucherController::class, 'destroy'])->n
 Route::resource('routers', RouterController::class);
 Route::get('routers/{id}/download', [RouterController::class, 'downloadScript'])->name('routers.download'); 
 Route::get('routers/{id}/snmp', [RouterController::class, 'checkSnmp'])->name('routers.snmp');
+Route::get('/router/{id}/download-ovpn', [RouterController::class, 'downloadOVPN'])->name('routers.download.ovpn');
+Route::get('/router/{id}/view-ovpn', [RouterController::class, 'viewOVPN'])->name('routers.view.ovpn');
+
 
 
 // ===================== ROUTE UNTUK ADMIN-SUB ===================== //

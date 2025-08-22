@@ -14,6 +14,7 @@ class Router extends Model
         'online',
         'script_path',
         'snmp',
+        'ovpn_path',
     ];
 }
 

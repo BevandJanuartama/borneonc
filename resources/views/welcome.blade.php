@@ -359,7 +359,7 @@
   <section id="tentang" class="py-20 bg-white relative">
     <div class="container mx-auto px-6">
       <header class="text-center mb-16 fade-element">
-        <div class="inline-block px-4 py-2 bg-purple-100 rounded-full text-4xl font-semibold text-purple-600 mb-4">
+        <div class="inline-block px-4 py-2 bg-purple-100 rounded-full text-md font-semibold text-purple-600 mb-4">
           Mengapa Memilih Kami?
         </div>
         {{-- <h2 class="text-4xl md:text-2xl font-bold text-gray-800 mb-6">Keunggulan BNC Radius</h2> --}}
@@ -446,7 +446,7 @@
   <section id="fitur" class="py-20 bg-gray-50">
     <div class="container mx-auto px-6">
       <header class="text-center mb-16 fade-element">
-        <div class="inline-block px-4 py-2 bg-purple-100 rounded-full text-4xl font-semibold text-purple-600 mb-4">
+        <div class="inline-block px-4 py-2 bg-purple-100 rounded-full text-md font-semibold text-purple-600 mb-4">
           Fitur Unggulan
         </div>
         {{-- <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Yang Membuat Kami Berbeda</h2> --}}
@@ -543,7 +543,7 @@
   <section class="py-20 bg-white">
     <div class="container mx-auto px-6">
       <header class="text-center mb-16 fade-element">
-        <div class="inline-block px-4 py-2 bg-purple-100 rounded-full text-4xl font-semibold text-purple-600 mb-4">
+        <div class="inline-block px-4 py-2 bg-purple-100 rounded-full text-md font-semibold text-purple-600 mb-4">
           Infrastruktur Pendukung
         </div>
         {{-- <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Fasilitas Enterprise</h2> --}}
@@ -628,7 +628,7 @@
 <section id="harga" class="py-16 bg-gray-50">
   <div class="container mx-auto px-6">
     <header class="text-center mb-12 fade-element">
-      <div class="inline-block px-4 py-2 bg-purple-100 rounded-full text-4xl font-semibold text-purple-600 mb-4">
+      <div class="inline-block px-4 py-2 bg-purple-100 rounded-full text-md font-semibold text-purple-600 mb-4">
           Harga Berlanggganan
         </div>
       <p class="text-lg text-gray-600 max-w-2xl mx-auto">Pilih paket yang sesuai dengan kebutuhan bisnis Anda</p>
@@ -700,7 +700,7 @@
   <section id="faq" class="py-20 bg-white">
     <div class="container mx-auto px-6 max-w-6xl">
       <header class="text-center mb-16 fade-element">
-        <div class="inline-block px-4 py-2 bg-purple-100 rounded-full text-4xl font-semibold text-purple-600 mb-4">
+        <div class="inline-block px-4 py-2 bg-purple-100 rounded-full text-md font-semibold text-purple-600 mb-4">
           Ada Pertanyaan?
         </div>
         {{-- <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6"></h2> --}}
