@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileVoucherController;
 use App\Http\Controllers\ResellerController;
+use App\Http\Controllers\SubscriptionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,10 @@ Route::get('/user/reseller', [ResellerController::class, 'index'])->name('resell
     Route::get('/user/voucher/{id}/edit', [ProfileVoucherController::class, 'edit'])->name('voucher.edit');
     Route::put('/user/voucher/{id}', [ProfileVoucherController::class, 'update'])->name('voucher.update');
     Route::delete('/user/voucher/{id}', [ProfileVoucherController::class, 'destroy'])->name('voucher.delete');
+
+    // // Subscription
+    Route::get('/subs', [SubscriptionController::class, 'create'])->name('subscription.create');
+    Route::post('/subs', [SubscriptionController::class, 'store'])->name('subscription.store');
+
+    
+

@@ -180,7 +180,7 @@ $(document).ready(function() {
     <section id="harga" class="py-20">
       <div class="container mx-auto px-4">
         <header class="text-center mb-14 border-b pb-6 border-indigo-200">
-          <h2 class="text-4xl font-bold text-gray-800">Halaman Dashboard</h2>
+          <h2 class="text-4xl font-bold text-gray-800">Halaman Transaksi</h2>
         </header>
       </div>
     </section>

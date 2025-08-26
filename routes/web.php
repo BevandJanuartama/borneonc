@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaketController;
@@ -126,6 +127,44 @@ Route::get('/dashboard', fn () => view('admin-sub.dashboard'))->name('admin-sub.
 // Log Activity
 Route::get('/info', [InfoController::class, 'index'])->name('info.index');
 Route::delete('/info/destroy-all', [InfoController::class, 'destroyAll'])->name('info.destroyAll');
+
+// Route::middleware(['auth', 'can:isAdmin'])->group(function () {
+//     Route::get('/admin', [RegisteredUserController::class, 'createSubadmin'])->name('subadmin.create');
+//     Route::post('/admin', [RegisteredUserController::class, 'storeSubadmin'])->name('subadmin.store');
+// });
+
+// Route::middleware('auth')->group(function () {
+//     // Create
+//     Route::get('/admin/create', [RegisteredUserController::class, 'createSubadmin'])->name('subadmin.create');
+//     Route::post('/admin/store', [RegisteredUserController::class, 'storeSubadmin'])->name('subadmin.store');
+    
+//     // Read
+//     Route::get('/admin', [RegisteredUserController::class, 'createSubadmin'])->name('subadmin.admin');
+    
+//     // Edit
+//     Route::get('/admin/edit/{id}', [RegisteredUserController::class, 'editSubadmin'])->name('subadmin.edit');
+//     Route::put('/admin/update/{id}', [RegisteredUserController::class, 'updateSubadmin'])->name('subadmin.update');
+    
+//     // Delete
+//     Route::delete('/admin/delete/{id}', [RegisteredUserController::class, 'deleteSubadmin'])->name('subadmin.delete');
+// });
+
+    //create
+    Route::get('/admin/create', [RegisteredUserController::class, 'createSubadmin'])->name('subadmin.create');
+    Route::post('/admin/store', [RegisteredUserController::class, 'storeSubadmin'])->name('subadmin.store');
+    
+    // Read
+    Route::get('/admin', [RegisteredUserController::class, 'createSubadmin'])->name('subadmin.admin');
+    
+    // Edit
+    Route::get('/admin/edit/{id}', [RegisteredUserController::class, 'editSubadmin'])->name('subadmin.edit');
+    Route::put('/admin/update/{id}', [RegisteredUserController::class, 'updateSubadmin'])->name('subadmin.update');
+    
+    // Delete
+    Route::delete('/admin/delete/{id}', [RegisteredUserController::class, 'deleteSubadmin'])->name('subadmin.delete');
+
+    
+    Route::view('/transaksi', 'admin-sub.transaksi')->name('subadmin.transaksi');
 
 
 // ===================== API TESTING ROUTES ===================== //
