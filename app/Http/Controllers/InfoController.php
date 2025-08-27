@@ -30,8 +30,28 @@ class InfoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validasi input
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'telepon' => 'nullable|string|max:20',
+            'info_aktifitas' => 'required|string',
+            'tanggal_kejadian' => 'required|date',
+            'level' => 'required|string',
+        ]);
+
+        // Simpan log
+        Info::create([
+            'nama_lengkap'    => $request->nama,
+            'no_telepon'      => $request->telepon,       // optional, kalau kolom ada
+            'ip_address'      => $request->ip() ?? $request->ip_address,
+            'info_aktifitas'  => $request->info_aktifitas,
+            'tanggal_kejadian'=> $request->tanggal_kejadian,
+            'level'           => $request->level,
+        ]);
+
+        return redirect()->route('info.index')->with('success', 'Log berhasil disimpan');
     }
+
 
     /**
      * Display the specified resource.

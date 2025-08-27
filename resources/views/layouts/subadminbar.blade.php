@@ -145,12 +145,13 @@
 
           <!-- Logout -->
           <li class="pt-4 border-t border-white/20 mt-4">
-            <form method="POST" action="#">
-              <button class="menu-item flex items-center space-x-3 p-3 rounded-lg text-white/80 hover:text-red-300 w-full text-left">
-                <i class="fas fa-sign-out-alt w-5"></i><span>Logout</span>
-              </button>
-            </form>
-          </li>
+          <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button class="menu-item flex items-center space-x-3 p-3 rounded-lg text-white/80 hover:text-red-300 w-full text-left">
+              <i class="fas fa-sign-out-alt w-5"></i><span>Logout</span>
+            </button>
+          </form>
+        </li>
         </ul>
       </nav>
     </div>

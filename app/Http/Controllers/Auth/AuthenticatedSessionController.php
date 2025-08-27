@@ -53,17 +53,31 @@ class AuthenticatedSessionController extends Controller
         // Ambil user yang sudah login
         $user = Auth::user();
 
-        // Simpan log login
-        Info::create([
-            'nama_lengkap'     => $user->nama ?? $user->telepon, // sesuaikan kolom yang ada di tabel users
-            'ip_address'       => $request->ip(),
-            'info_aktifitas'   => 'Berhasil login ke aplikasi',
-            'tanggal_kejadian' => now(),
-        ]);
+        // Cari IP asli
+        $ipAddress = $request->header('X-Forwarded-For')
+            ?? $request->header('Client-Ip')
+            ?? $request->ip();
+
+        // Hanya log kalau level user ada di daftar berikut
+        $levelsAllowed = ['administrator', 'keuangan', 'teknisi', 'operator'];
+
+        if (in_array($user->level, $levelsAllowed)) {
+            Info::create([
+                'nama_lengkap'     => $user->nama ?? $user->name ?? $user->telepon,
+                'telepon'          => $user->telepon,
+                'ip_address'       => $ipAddress,
+                'info_aktifitas'   => 'Berhasil login ke aplikasi',
+                'tanggal_kejadian' => now(),
+                'level'            => $user->level,
+            ]);
+        }
+
 
         // Redirect berdasarkan level
         if ($user->level === 'admin') {
             return redirect()->intended(route('admin.dashboard'));
+        } elseif ($user->level === 'administrator') {
+            return redirect()->intended(route('admin-sub.dashboard'));
         } else {
             return redirect()->intended(route('user.instance'));
         }

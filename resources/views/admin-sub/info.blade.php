@@ -1,124 +1,121 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log Aplikasi</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - BNC CLOUD MANAGER</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .sidebar-gradient {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                  0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    .menu-item {
+      transition: all 0.3s ease;
+    }
+    .menu-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(5px);
+    }
+  </style>
 </head>
-<body class="bg-light text-black">
+<body class="bg-gray-50 flex min-h-screen">
 
-    <!-- Sidebar -->
-    @include('layouts.subadminbar')
+  <!-- Sidebar -->
+  @include('layouts.subadminbar')
 
-<div class="page-content p-4 ml-64">
+  <!-- Wrapper utama konten -->
+  <main class="md:pl-72 w-full">
+    
+    <!-- Judul -->
+    <section class="py-10 border-b border-indigo-200">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl text-center font-bold text-gray-800">Info Log</h2>
+      </div>
+    </section>
 
-    <!-- start page title -->
-    <div class="page-title-box mb-4">
-        <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h3>LOG APLIKASI</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end page title -->    
+    <!-- Konten -->
+    <section class="py-6">
+      <div class="container mx-auto px-6">
 
-    <div class="container-fluid">
+        <!-- Filter + Tombol -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
+          <form action="{{ route('info.destroyAll') }}" method="POST" 
+                onsubmit="return confirm('Kosongkan semua log?')">
+              @csrf
+              @method('DELETE')
+              <button type="submit" 
+                      class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg shadow">
+                <i class="fa fa-trash"></i> Kosongkan Log
+              </button>
+          </form>
 
-        <div class="card border-top border-primary shadow">
-            <div class="card-body">
-
-                <div class="row">
-                    <div class="col-md-7">
-                        <form action="{{ route('info.destroyAll') }}" method="POST" 
-                              onsubmit="return confirm('Kosongkan semua log?')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm me-1">
-                                <i class="far fa-trash-alt fa-lg"></i> KOSONGKAN
-                            </button>
-                        </form>
-                    </div>
-
-                    <div class="mb-2 mt-3 col-md-5">
-                        <form action="{{ route('info.index') }}" method="GET">
-                            <div class="row">
-                                <label class="col-md-5 col-form-label text-end">FILTER TANGGAL</label>
-                                <div class="col-md-7">
-                                    <input type="date" class="form-control" name="tanggal" 
-                                           value="{{ request('tanggal') }}">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <hr class="bg-primary">
-
-                <div class="table-responsive">
-                    <table id="tableData" class="table table-bordered table-hover text-nowrap table-dark">
-                        <thead>
-                        <tr>
-                            <th>NO</th>
-                            <th>NAMA LENGKAP</th>
-                            <th>IP ADDRESS</th>
-                            <th>INFO AKTIFITAS</th>
-                            <th>TANGGAL KEJADIAN</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($infos as $info)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $info->nama_lengkap }}</td>
-                                    <td>{{ $info->ip_address }}</td>
-                                    <td>{{ $info->info_aktifitas }}</td>
-                                    <td>{{ $info->tanggal_kejadian }}</td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="5" class="text-center">Belum ada data log</td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                    <div class="mt-3">
-                        {{ $infos->links('pagination::bootstrap-5') }}
-                    </div>
-                </div>
-
-            </div>
+          <form action="{{ route('admin-sub.dashboard') }}" method="GET" class="flex items-center gap-2">
+            <label class="text-sm text-gray-700">Filter Tanggal</label>
+            <input type="date" name="tanggal" value="{{ request('tanggal') }}"
+                   onchange="this.form.submit()"
+                   class="border-gray-300 rounded-lg px-3 py-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+          </form>
         </div>
 
-    </div>
-</div>
-
-<!-- Modal isi log -->
-<div class="modal fade" id="modalLog" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content text-light">
-            <div class="modal-body">
-                <div class="col-lg-12">
-                    <label class="form-label">INFO AKTIFITAS</label>
-                    <textarea class="form-control" rows="7" name="log"></textarea> 
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
-            </div>
+        <!-- Table -->
+        <div class="overflow-x-auto bg-white rounded-xl shadow">
+          <table class="min-w-full text-sm text-left text-gray-600">
+            <thead class="bg-indigo-600 text-white uppercase text-xs">
+              <tr>
+                <th class="px-4 py-3">No</th>
+                <th class="px-4 py-3">Nama Lengkap</th>
+                <th class="px-4 py-3">Telepon</th>
+                <th class="px-4 py-3">IP Address</th>
+                <th class="px-4 py-3">Info Aktifitas</th>
+                <th class="px-4 py-3">Tanggal Kejadian</th>
+                <th class="px-4 py-3">Level</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              @forelse($infos as $info)
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-3">{{ $loop->iteration }}</td>
+                <td class="px-4 py-3 font-medium">{{ $info->nama_lengkap }}</td>
+                <td class="px-4 py-3">{{ $info->telepon }}</td>
+                <td class="px-4 py-3">{{ $info->ip_address }}</td>
+                <td class="px-4 py-3">{{ $info->info_aktifitas }}</td>
+                <td class="px-4 py-3">{{ $info->tanggal_kejadian }}</td>
+                <td class="px-4 py-3">{{ $info->level }}</td>
+              </tr>
+              @empty
+              <tr>
+                <td colspan="7" class="px-4 py-6 text-center text-gray-400">
+                  Belum ada data log
+                </td>
+              </tr>
+              @endforelse
+            </tbody>
+          </table>
         </div>
-    </div>
-</div>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+        <!-- Pagination -->
+        <div class="mt-6">
+          {{ $infos->links('pagination::bootstrap-5') }}
+        </div>
 
+      </div>
+    </section>
 
+  </main>
 
 </body>
 </html>

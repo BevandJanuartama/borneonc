@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
 {
-    Schema::create('logs', function (Blueprint $table) {
+    Schema::create('infos', function (Blueprint $table) {
         $table->id();
-        $table->string('nama_lengkap');   // contoh: ADMINISTRATOR
-        $table->string('ip_address');     // contoh: 103.47.133.78
-        $table->string('info_aktifitas'); // contoh: Berhasil login ke aplikasi
-        $table->timestamp('tanggal_kejadian'); 
+        $table->string('nama_lengkap');   
+        $table->string('telepon')->nullable();   // kolom telepon
+        $table->string('ip_address');     
+        $table->string('info_aktifitas'); 
+        $table->timestamp('tanggal_kejadian');
+        $table->string('level')->nullable(); 
         $table->timestamps();
     });
 }
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('logs');
+        Schema::dropIfExists('infos');
     }
 };

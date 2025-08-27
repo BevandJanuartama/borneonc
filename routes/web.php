@@ -14,6 +14,8 @@ use App\Http\Controllers\ProfileVoucherController;
 use App\Http\Controllers\ResellerController;
 use App\Http\Controllers\RouterController;
 use App\Http\Controllers\StokVoucherController;
+use App\Models\Info;
+use Illuminate\Http\Request;
 
 
 /*
@@ -119,7 +121,22 @@ Route::get('routers/{id}/snmp', [RouterController::class, 'checkSnmp'])->name('r
 
 
 // ===================== ROUTE UNTUK ADMIN-SUB ===================== //
-Route::get('/dashboard', fn () => view('admin-sub.dashboard'))->name('admin-sub.dashboard');
+// Route::get('/dashboard', fn () => view('admin-sub.dashboard'))->name('admin-sub.dashboard');
+
+Route::get('/dashboard', function (Request $request) {
+    $query = Info::query();
+
+    // filter tanggal kalau ada request
+    if ($request->filled('tanggal')) {
+        $query->whereDate('tanggal_kejadian', $request->tanggal);
+    }
+
+    // ambil data log terbaru dengan pagination
+    $infos = $query->orderBy('tanggal_kejadian', 'desc')->paginate(10);
+
+    return view('admin-sub.dashboard', compact('infos'));
+})->name('admin-sub.dashboard');
+
 
 // Route::get('/log', fn () => view('admin-sub.log'))->name('admin-sub.log');
 // Route::get('/routers', [RouterController::class, 'index'])->name('routers.index'); 
