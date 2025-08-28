@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     @vite('resources/css/app.css')
-    <script>
+    {{-- <script>
         // Backup jika Tailwind belum ter-compile
         if (!document.querySelector('link[href*="app.css"]')) {
             const link = document.createElement('script');
             link.src = 'https://cdn.tailwindcss.com';
             document.head.appendChild(link);
         }
-    </script>
+    </script> --}}
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .custom-blue { color: #4A90E2; }
         .bg-custom-blue { background-color: #4A90E2; }
@@ -167,7 +168,6 @@
                         </div>
                     </div>
 
-                    <p class="text-sm text-gray-600">Masukkan kode di kotak per huruf/angka</p>
 
                     <!-- Hidden input untuk gabungan semua digit -->
                     <x-text-input type="hidden" id="captcha" name="captcha" required autocomplete="off" />

@@ -6,6 +6,12 @@
   <title>BNC - Borneo Network Center</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- ===========================================================
+                    MADE BY @jnrtma
+     DM ME IF YOU ARE INTERESTED IN COLLABORATION!!!
+     =========================================================== -->
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
     
@@ -701,7 +707,7 @@
     <div class="container mx-auto px-6 max-w-6xl">
       <header class="text-center mb-16 fade-element">
         <div class="inline-block px-4 py-2 bg-purple-100 rounded-full text-md font-semibold text-purple-600 mb-4">
-          Ada Pertanyaan?
+          FAQ
         </div>
         {{-- <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6"></h2> --}}
         <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
