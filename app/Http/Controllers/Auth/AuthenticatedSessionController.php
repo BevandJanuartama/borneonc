@@ -72,11 +72,10 @@ class AuthenticatedSessionController extends Controller
             ]);
         }
 
-
         // Redirect berdasarkan level
         if ($user->level === 'admin') {
             return redirect()->intended(route('admin.dashboard'));
-        } elseif ($user->level === 'administrator') {
+        } elseif (in_array($user->level, ['administrator', 'teknisi', 'operator', 'keuangan'])) {
             return redirect()->intended(route('admin-sub.dashboard'));
         } else {
             return redirect()->intended(route('user.instance'));

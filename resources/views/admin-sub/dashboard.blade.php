@@ -39,8 +39,16 @@
 </head>
 <body class="bg-gray-50 flex min-h-screen">
 
-  <!-- Sidebar -->
-  @include('layouts.subadminbar')
+   <!-- Sidebar sesuai role -->
+  @if(Auth::user()->level === 'administrator')
+    @include('layouts.subadminbar')
+  @elseif(Auth::user()->level === 'keuangan')
+    @include('layouts.keuanganbar')
+  @elseif(Auth::user()->level === 'operator')
+    @include('layouts.operatorbar')
+  @elseif(Auth::user()->level === 'teknisi')
+    @include('layouts.teknisibar')
+  @endif
 
   <!-- Wrapper utama konten -->
   <main class="md:pl-72 w-full">

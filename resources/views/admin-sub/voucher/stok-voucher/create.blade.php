@@ -9,8 +9,16 @@
 </head>
 <body class="bg-white text-black min-h-screen flex">
 
-    <!-- Sidebar -->
+    <!-- Sidebar sesuai role -->
+  @if(Auth::user()->level === 'administrator')
     @include('layouts.subadminbar')
+  @elseif(Auth::user()->level === 'keuangan')
+    @include('layouts.keuanganbar')
+  @elseif(Auth::user()->level === 'operator')
+    @include('layouts.operatorbar')
+  @elseif(Auth::user()->level === 'teknisi')
+    @include('layouts.teknisibar')
+  @endif
 
     <!-- Main Content -->
     <div class="flex-1 ml-64 p-6">

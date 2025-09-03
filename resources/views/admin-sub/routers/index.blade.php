@@ -31,7 +31,16 @@
 </head>
 <body class="bg-gray-100 text-gray-900">
 
+    <!-- Sidebar sesuai role -->
+  @if(Auth::user()->level === 'administrator')
     @include('layouts.subadminbar')
+  @elseif(Auth::user()->level === 'keuangan')
+    @include('layouts.keuanganbar')
+  @elseif(Auth::user()->level === 'operator')
+    @include('layouts.operatorbar')
+  @elseif(Auth::user()->level === 'teknisi')
+    @include('layouts.teknisibar')
+  @endif
 
     <div class="p-6 sm:ml-64">
         <div class="bg-white rounded-lg shadow p-4">

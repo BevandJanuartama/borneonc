@@ -9,8 +9,17 @@
 </head>
 
 <body class="bg-light d-flex">
-    <!-- Sidebar -->
+    
+    <!-- Sidebar sesuai role -->
+  @if(Auth::user()->level === 'administrator')
     @include('layouts.subadminbar')
+  @elseif(Auth::user()->level === 'keuangan')
+    @include('layouts.keuanganbar')
+  @elseif(Auth::user()->level === 'operator')
+    @include('layouts.operatorbar')
+  @elseif(Auth::user()->level === 'teknisi')
+    @include('layouts.teknisibar')
+  @endif
 
     <!-- Konten -->
     <div class="container-fluid py-4" style="margin-left: 250px;">

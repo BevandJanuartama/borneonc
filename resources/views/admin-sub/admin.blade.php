@@ -82,8 +82,17 @@
     </style>
 </head>
 <body class="bg-gray-100">
-    <!-- Sidebar -->
+
+    <!-- Sidebar sesuai role -->
+  @if(Auth::user()->level === 'administrator')
     @include('layouts.subadminbar')
+  @elseif(Auth::user()->level === 'keuangan')
+    @include('layouts.keuanganbar')
+  @elseif(Auth::user()->level === 'operator')
+    @include('layouts.operatorbar')
+  @elseif(Auth::user()->level === 'teknisi')
+    @include('layouts.teknisibar')
+  @endif
 
     <!-- Main Content -->
     <div class="md:ml-64 flex items-center justify-center min-h-screen p-6">
