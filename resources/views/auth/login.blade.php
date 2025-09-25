@@ -34,8 +34,9 @@
     <div class="bg-white rounded-3xl shadow-2xl overflow-hidden w-full max-w-5xl flex min-h-[600px]">
         
         <!-- Left Illustration Panel -->
-        <div class="hidden lg:flex w-1/2 bg-gradient-to-br from-blue-100 to-indigo-200 items-center justify-center p-12 relative">
-            
+        <div class="hidden lg:flex w-1/2 bg-cover bg-center items-center justify-center p-12 relative"
+            style="background-image: linear-gradient(to bottom right, rgba(219,234,254,0.8), rgba(199,210,254,0.8)), url('{{ asset('assets/img/bg-login.png') }}');">
+
             <!-- Decorative background elements -->
             <div class="absolute inset-0 opacity-10">
                 <div class="absolute top-10 left-10 w-20 h-20 bg-blue-300 rounded-full"></div>

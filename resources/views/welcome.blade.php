@@ -6,6 +6,7 @@
   <title>BNC - Borneo Network Center</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- Lottie Script -->
 
   <!-- ===========================================================
                     MADE BY @jnrtma
@@ -250,20 +251,22 @@
   <!-- HEADER -->
   <header id="mainHeader" class="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm transition-all duration-500 border-b border-white/20">
     <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-      <div class="flex items-center">
-        <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center mr-3 shadow-lg">
-          <i class="ri-global-line text-xl text-white"></i>
-        </div>
-        <div>
+      
+      <!-- Logo + Title -->
+      <div class="flex items-center gap-3">
+        <img src="assets/img/logo-bnc.png" class="w-12 h-12 object-contain" alt="Logo BNC">
+        <div class="leading-tight">
           <h1 class="text-lg font-bold gradient-text">BORNEO</h1>
-          <p class="text-md font-bold gradient-text">Network Center</p>
+          <p class="text-sm font-semibold gradient-text">Network Center</p>
         </div>
       </div>
-      
-      <button id="burgerBtn" class="text-2xl md:hidden text-gray-700 hover:text-purple-600 transition-colors">
+
+      <!-- Burger Button (Mobile) -->
+      <button id="burgerBtn" class="md:hidden text-2xl text-gray-700 hover:text-purple-600 transition-colors">
         <i class="ri-menu-line"></i>
       </button>
-      
+
+      <!-- Navigation (Desktop) -->
       <nav class="hidden md:flex items-center gap-8">
         <a href="#beranda" class="nav-link text-gray-700 hover:text-purple-600 font-medium">Beranda</a>
         <a href="#tentang" class="nav-link text-gray-700 hover:text-purple-600 font-medium">Tentang</a>
@@ -277,6 +280,7 @@
       </nav>
     </div>
   </header>
+
 
   <!-- OVERLAY & SIDEBAR -->
   <div id="overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 hidden transition-all duration-300"></div>
@@ -297,69 +301,56 @@
   </div>
 
   <!-- HERO SECTION -->
-  <section id="beranda" class="pt-28 pb-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
-    <!-- Background decorations -->
-    <div class="absolute inset-0 opacity-10">
-      <div class="absolute top-20 left-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-      <div class="absolute top-40 right-10 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
-      <div class="absolute -bottom-20 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"></div>
-    </div>
+<section id="beranda" class="pt-28 pb-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
+  <!-- Background decorations -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-20 left-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+    <div class="absolute top-40 right-10 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
+    <div class="absolute -bottom-20 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"></div>
+  </div>
 
-    <div class="container mx-auto px-6 relative z-10">
-      <div class="lg:flex lg:items-center lg:gap-16">
-        <div class="lg:w-3/5 mb-12 lg:mb-0 fade-element text-center lg:text-left">
-          {{-- <div class="inline-block px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full text-sm font-semibold text-purple-600 mb-6 shadow-lg">
-            🚀 Solusi Billing Mikrotik Terdepan
-          </div> --}}
-          
-          <h1 class="text-4xl md:text-6xl font-bold mb-6 text-gray-800 leading-tight">
-            BILLING MIKROTIK 
-            <span class="gradient-text block">PPPOE & HOTSPOT</span>
-          </h1>
-          
-          <p class="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
-            Aplikasi billing dan server radius yang <span class="font-semibold text-purple-600">powerful</span> untuk mengelola jaringan ISP Anda dengan mudah dan efisien
-          </p>
-          
-          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start text-center sm:text-left">
-            <a href="#harga" class="btn-primary text-lg px-8 py-4 inline-flex items-center gap-2 justify-center">
-              <i class="ri-rocket-line"></i>
-              Mulai Berlangganan
-            </a>
-            <a href="#fitur" class="btn-secondary text-lg px-8 py-4 inline-flex items-center gap-2 justify-center bg-white/70 text-gray-700 border-gray-200 hover:bg-white/90">
-              <i class="ri-play-circle-line"></i>
-              Lihat Demo
-            </a>
-          </div>
-
-          {{-- <!-- Stats -->
-          <div class="grid grid-cols-3 gap-6 mt-12 pt-12 border-t border-gray-200">
-            <div class="text-center">
-              <div class="text-2xl font-bold gradient-text">1000+</div>
-              <div class="text-sm text-gray-500">Active Users</div>
-            </div>
-            <div class="text-center">
-              <div class="text-2xl font-bold gradient-text">99.9%</div>
-              <div class="text-sm text-gray-500">Uptime</div>
-            </div>
-            <div class="text-center">
-              <div class="text-2xl font-bold gradient-text">24/7</div>
-              <div class="text-sm text-gray-500">Support</div>
-            </div>
-          </div> --}}
-        </div>
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="lg:flex lg:items-center lg:gap-16">
+      <!-- TEXT -->
+      <div class="lg:w-3/5 mb-12 lg:mb-0 fade-element text-center lg:text-left">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 text-gray-800 leading-tight">
+          BILLING MIKROTIK 
+          <span class="gradient-text block">PPPOE & HOTSPOT</span>
+        </h1>
         
-        <div class="lg:w-2/5 fade-element">
-          <div class="relative">
-            <div class="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 rounded-3xl blur-2xl opacity-30 floating"></div>
-            <img src="https://cdn-icons-png.flaticon.com/512/3598/3598180.png" 
-                 class="relative w-full max-w-lg mx-auto floating drop-shadow-2xl" 
-                 alt="BNC Radius Logo">
-          </div>
+        <p class="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
+          Aplikasi billing dan server radius yang <span class="font-semibold text-purple-600">powerful</span> 
+          untuk mengelola jaringan ISP Anda dengan mudah dan efisien
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start text-center sm:text-left">
+          <a href="#harga" class="btn-primary text-lg px-8 py-4 inline-flex items-center gap-2 justify-center">
+            <i class="ri-rocket-line"></i>
+            Mulai Berlangganan
+          </a>
+          <a href="#fitur" class="btn-secondary text-lg px-8 py-4 inline-flex items-center gap-2 justify-center bg-white/70 text-gray-700 border-gray-200 hover:bg-white/90">
+            <i class="ri-play-circle-line"></i>
+            Lihat Demo
+          </a>
+        </div>
+      </div>
+      
+      <!-- IMAGE -->
+      <div class="lg:w-2/5 fade-element">
+        <div class="relative">
+          <!-- Background Glow -->
+          <div class="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 rounded-3xl blur-2xl opacity-30 floating"></div>
+          
+          <!-- Flaticon Image -->
+          <img src="https://cdn-icons-png.flaticon.com/512/3598/3598180.png" 
+               class="relative w-full max-w-lg mx-auto floating drop-shadow-2xl" 
+               alt="BNC Radius Logo">
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- VALUES SECTION -->
   <section id="tentang" class="py-20 bg-white relative">
@@ -468,77 +459,103 @@
 
         <div class="w-full xl:w-3/5 xl:pl-12 fade-element">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- Card 1 -->
             <div class="group bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-blue-500">
-              <div class="flex items-start">
-                <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+              <div class="flex items-center">
+                <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mr-4 
+                            group-hover:scale-110 transition-transform flex-shrink-0">
                   <i class="ri-award-fill text-xl text-white"></i>
                 </div>
                 <div>
                   <h4 class="font-bold text-gray-800 mb-2">Terpercaya & Teruji</h4>
-                  <p class="text-gray-600 text-sm leading-relaxed">Digunakan ribuan ISP di seluruh Indonesia dengan track record excellent.</p>
+                  <p class="text-gray-600 text-sm leading-relaxed">
+                    Digunakan ribuan ISP di seluruh Indonesia dengan track record excellent.
+                  </p>
                 </div>
               </div>
             </div>
 
+            <!-- Card 2 -->
             <div class="group bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-green-500">
-              <div class="flex items-start">
-                <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+              <div class="flex items-center">
+                <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mr-4 
+                            group-hover:scale-110 transition-transform flex-shrink-0">
                   <i class="ri-cpu-line text-xl text-white"></i>
                 </div>
                 <div>
                   <h4 class="font-bold text-gray-800 mb-2">Resource Ringan</h4>
-                  <p class="text-gray-600 text-sm leading-relaxed">Cloud-based storage mengurangi beban pada perangkat MikroTik Anda.</p>
+                  <p class="text-gray-600 text-sm leading-relaxed">
+                    Cloud-based storage mengurangi beban pada perangkat MikroTik Anda.
+                  </p>
                 </div>
               </div>
             </div>
 
+            <!-- Card 3 -->
             <div class="group bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-purple-500">
-              <div class="flex items-start">
-                <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+              <div class="flex items-center">
+                <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center mr-4 
+                            group-hover:scale-110 transition-transform flex-shrink-0">
                   <i class="ri-shield-check-line text-xl text-white"></i>
                 </div>
                 <div>
                   <h4 class="font-bold text-gray-800 mb-2">Data Aman</h4>
-                  <p class="text-gray-600 text-sm leading-relaxed">Backup otomatis dan keamanan enterprise-grade untuk melindungi data.</p>
+                  <p class="text-gray-600 text-sm leading-relaxed">
+                    Backup otomatis dan keamanan enterprise-grade untuk melindungi data.
+                  </p>
                 </div>
               </div>
             </div>
 
+            <!-- Card 4 -->
             <div class="group bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-orange-500">
-              <div class="flex items-start">
-                <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+              <div class="flex items-center">
+                <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center mr-4 
+                            group-hover:scale-110 transition-transform flex-shrink-0">
                   <i class="ri-team-line text-xl text-white"></i>
                 </div>
                 <div>
                   <h4 class="font-bold text-gray-800 mb-2">Sistem Mitra</h4>
-                  <p class="text-gray-600 text-sm leading-relaxed">Program kemitraan dengan sistem komisi dan manajemen independen.</p>
+                  <p class="text-gray-600 text-sm leading-relaxed">
+                    Program kemitraan dengan sistem komisi dan manajemen independen.
+                  </p>
                 </div>
               </div>
             </div>
 
+            <!-- Card 5 -->
             <div class="group bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-indigo-500">
-              <div class="flex items-start">
-                <div class="w-12 h-12 bg-indigo-500 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+              <div class="flex items-center">
+                <div class="w-12 h-12 bg-indigo-500 rounded-lg flex items-center justify-center mr-4 
+                            group-hover:scale-110 transition-transform flex-shrink-0">
                   <i class="ri-file-chart-line text-xl text-white"></i>
                 </div>
                 <div>
                   <h4 class="font-bold text-gray-800 mb-2">Laporan Detail</h4>
-                  <p class="text-gray-600 text-sm leading-relaxed">Analytics lengkap dengan export data ke berbagai format file.</p>
+                  <p class="text-gray-600 text-sm leading-relaxed">
+                    Analytics lengkap dengan export data ke berbagai format file.
+                  </p>
                 </div>
               </div>
             </div>
 
+            <!-- Card 6 -->
             <div class="group bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-pink-500">
-              <div class="flex items-start">
-                <div class="w-12 h-12 bg-pink-500 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+              <div class="flex items-center">
+                <div class="w-12 h-12 bg-pink-500 rounded-lg flex items-center justify-center mr-4 
+                            group-hover:scale-110 transition-transform flex-shrink-0">
                   <i class="ri-file-excel-2-line text-xl text-white"></i>
                 </div>
                 <div>
                   <h4 class="font-bold text-gray-800 mb-2">Export & Import</h4>
-                  <p class="text-gray-600 text-sm leading-relaxed">Dukungan penuh untuk Excel dan integrasi dengan sistem lain.</p>
+                  <p class="text-gray-600 text-sm leading-relaxed">
+                    Dukungan penuh untuk Excel dan integrasi dengan sistem lain.
+                  </p>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -562,14 +579,11 @@
   <!-- Card 1 -->
   <div class="group relative bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-8 rounded-2xl shadow-lg card-hover fade-element overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 text-center">
     <!-- Glow effect -->
-    <div class="absolute inset-0 bg-gradient-to-tr from-indigo-200 via-purple-200 to-transparent opacity-0 group-hover:opacity-20 blur-2xl transition duration-500"></div>
+    <div class="absolute inset-0 bg-gradient-to-tr from-indigo-400 via-purple-400 to-transparent opacity-0 group-hover:opacity-20 blur-2xl transition duration-500"></div>
     
     <div class="relative mb-6">
       <div class="w-16 h-16 bg-gradient-to-tr from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform duration-500">
         <i class="ri-server-fill text-3xl text-white"></i>
-      </div>
-      <div class="absolute -top-2 -right-2 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center shadow-md">
-        <i class="ri-check-line text-white text-xs"></i>
       </div>
     </div>
     <h3 class="font-bold text-xl mb-4 text-gray-800 group-hover:text-indigo-700 transition">VPN Server Global</h3>
@@ -584,14 +598,11 @@
 
   <!-- Card 2 -->
   <div class="group relative bg-gradient-to-br from-orange-50 via-red-50 to-pink-50 p-8 rounded-2xl shadow-lg card-hover fade-element overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 text-center">
-    <div class="absolute inset-0 bg-gradient-to-tr from-red-200 via-orange-200 to-transparent opacity-0 group-hover:opacity-20 blur-2xl transition duration-500"></div>
+    <div class="absolute inset-0 bg-gradient-to-tr from-red-300 via-orange-300 to-transparent opacity-0 group-hover:opacity-20 blur-2xl transition duration-500"></div>
 
     <div class="relative mb-6">
       <div class="w-16 h-16 bg-gradient-to-tr from-red-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform duration-500">
         <i class="ri-database-fill text-3xl text-white"></i>
-      </div>
-      <div class="absolute -top-2 -right-2 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center shadow-md">
-        <i class="ri-shield-check-line text-white text-xs"></i>
       </div>
     </div>
     <h3 class="font-bold text-xl mb-4 text-gray-800 group-hover:text-red-600 transition">Server Enterprise</h3>
@@ -606,14 +617,11 @@
 
   <!-- Card 3 -->
   <div class="group relative bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 p-8 rounded-2xl shadow-lg card-hover fade-element overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 text-center">
-    <div class="absolute inset-0 bg-gradient-to-tr from-emerald-200 via-green-200 to-transparent opacity-0 group-hover:opacity-20 blur-2xl transition duration-500"></div>
+    <div class="absolute inset-0 bg-gradient-to-tr from-emerald-300 via-green-300 to-transparent opacity-0 group-hover:opacity-20 blur-2xl transition duration-500"></div>
 
     <div class="relative mb-6">
       <div class="w-16 h-16 bg-gradient-to-tr from-green-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform duration-500">
         <i class="ri-refresh-line text-3xl text-white"></i>
-      </div>
-      <div class="absolute -top-2 -right-2 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center shadow-md">
-        <i class="ri-time-line text-white text-xs"></i>
       </div>
     </div>
     <h3 class="font-bold text-xl mb-4 text-gray-800 group-hover:text-emerald-600 transition">Backup Otomatis</h3>
@@ -1299,7 +1307,7 @@
     window.addEventListener('scroll', debounce(() => {
       // Additional scroll-based animations can be added here
     }, 10));
-
   </script>
+  
 </body>
 </html>

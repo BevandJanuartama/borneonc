@@ -26,7 +26,7 @@
 </head>
 <body class="bg-gray-100 flex min-h-screen">
 
-  <!-- ✅ Mobile Header -->
+  <!-- Mobile Header -->
   <div class="flex items-center justify-between p-4 md:hidden fixed top-0 left-0 right-0 z-40 bg-white shadow">
     <!-- Burger -->
     <button id="burgerButton" class="text-purple-500 focus:outline-none">

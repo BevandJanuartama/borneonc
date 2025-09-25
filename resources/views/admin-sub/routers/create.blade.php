@@ -20,7 +20,6 @@
             const tipe = document.getElementById('tipe_koneksi').value;
             const ipInput = document.querySelector('input[name="ip_address"]');
             if (tipe === 'vpn_radius') {
-                // Auto generate IP default (bisa ganti sesuai kebutuhan)
                 ipInput.value = "172.31." + Math.floor(Math.random()*256) + "." + Math.floor(Math.random()*256);
             }
         }
@@ -30,15 +29,15 @@
 <body class="bg-gray-100 min-h-screen">
 
     <!-- Sidebar sesuai role -->
-  @if(Auth::user()->level === 'administrator')
-    @include('layouts.subadminbar')
-  @elseif(Auth::user()->level === 'keuangan')
-    @include('layouts.keuanganbar')
-  @elseif(Auth::user()->level === 'operator')
-    @include('layouts.operatorbar')
-  @elseif(Auth::user()->level === 'teknisi')
-    @include('layouts.teknisibar')
-  @endif
+    @if(Auth::user()->level === 'administrator')
+      @include('layouts.subadminbar')
+    @elseif(Auth::user()->level === 'keuangan')
+      @include('layouts.keuanganbar')
+    @elseif(Auth::user()->level === 'operator')
+      @include('layouts.operatorbar')
+    @elseif(Auth::user()->level === 'teknisi')
+      @include('layouts.teknisibar')
+    @endif
 
     <div class="p-6 sm:ml-64 flex justify-center items-center">
         <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
