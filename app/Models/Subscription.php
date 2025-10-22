@@ -11,6 +11,7 @@ class Subscription extends Model
 
     protected $fillable = [
         'user_id',
+        'paket_id', 
         'data_center',
         'subdomain_url',
         'siklus',
@@ -28,5 +29,11 @@ class Subscription extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    // Relasi ke Paket
+    public function paket()
+    {
+        return $this->belongsTo(Paket::class);
     }
 }

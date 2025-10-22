@@ -16,6 +16,10 @@ return new class extends Migration {
             // DATA INSTANCE
             $table->enum('data_center', ['IDC 3D JAKARTA', 'NCIX PEKANBARU']);
             $table->string('subdomain_url')->unique();
+
+            // Tambah kolom paket
+            $table->foreignId('paket_id')->constrained()->onDelete('cascade');
+
             $table->enum('siklus', ['bulanan', 'tahunan']);
             $table->decimal('harga', 10, 2); // sesuai paket + siklus
 
@@ -37,3 +41,4 @@ return new class extends Migration {
         Schema::dropIfExists('subscriptions');
     }
 };
+

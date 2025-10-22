@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Data Subscriptions</title>
+    <title>Daftar Invoice</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="flex bg-gray-100 min-h-screen">
@@ -20,40 +20,48 @@
             <table class="min-w-full border border-gray-300 bg-white rounded-lg shadow-md">
                 <thead>
                     <tr class="bg-gray-200 text-gray-700">
-                        <th class="px-4 py-2 border">INVOICE</th>
-                        <th class="px-4 py-2 border">JENIS</th>
-                        <th class="px-4 py-2 border">INSTANCE</th>
-                        <th class="px-4 py-2 border">PERUSAHAAN</th>
-                        <th class="px-4 py-2 border">TGL TERBIT</th>
-                        <th class="px-4 py-2 border">BATAS BAYAR</th>
-                        <th class="px-4 py-2 border">TGL BAYAR</th>
-                        <th class="px-4 py-2 border">TOTAL</th>
+                        <th class="px-4 py-2 border">Perusahaan</th>
+                        <th class="px-4 py-2 border">Paket</th>
+                        <th class="px-4 py-2 border">Siklus</th>
+                        <th class="px-4 py-2 border">Harga</th>
+                        <th class="px-4 py-2 border">Status</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {{-- @foreach ($subscriptions as $sub)
-                        <tr class="text-center">
-                            <td class="px-4 py-2 border">INV-{{ str_pad($sub->id, 5, '0', STR_PAD_LEFT) }}</td>
-                            <td class="px-4 py-2 border">{{ ucfirst($sub->siklus) }}</td>
-                            <td class="px-4 py-2 border">{{ $sub->data_center }}</td>
-                            <td class="px-4 py-2 border">{{ $sub->nama_perusahaan }}</td>
-                            <td class="px-4 py-2 border">{{ $sub->created_at->format('d-m-Y') }}</td>
-                            <td class="px-4 py-2 border">
-                                {{ $sub->created_at->addDays(7)->format('d-m-Y') }}
-                            </td>
-                            <td class="px-4 py-2 border">
-                                @if($sub->status == 'dibayar')
-                                    {{ $sub->updated_at->format('d-m-Y') }}
-                                @else
-                                    -
-                                @endif
-                            </td>
-                            <td class="px-4 py-2 border">Rp {{ number_format($sub->harga, 0, ',', '.') }}</td>
-                        </tr>
-                    @endforeach --}}
+                <tbody id="invoice-table-body">
+                    <!-- Data akan diisi lewat JS -->
                 </tbody>
             </table>
         </div>
     </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    fetchInvoices();
+
+    function fetchInvoices() {
+        fetch("{{ route('subscription.user.json') }}") // route JSON khusus user
+        .then(res => res.json())
+        .then(data => {
+            const tbody = document.getElementById('invoice-table-body');
+            tbody.innerHTML = '';
+            data.forEach(sub => {
+                const tr = document.createElement('tr');
+                tr.className = 'text-center';
+
+                tr.innerHTML = `
+                    <td class="px-4 py-2 border">${sub.nama_perusahaan}</td>
+                    <td class="px-4 py-2 border">${sub.paket?.nama || '-'}</td>
+                    <td class="px-4 py-2 border">${sub.siklus.charAt(0).toUpperCase() + sub.siklus.slice(1)}</td>
+                    <td class="px-4 py-2 border">Rp ${Number(sub.harga).toLocaleString('id-ID')}</td>
+                    <td class="px-4 py-2 border">${sub.status.charAt(0).toUpperCase() + sub.status.slice(1)}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        })
+        .catch(err => console.error(err));
+    }
+});
+</script>
+
 </body>
 </html>

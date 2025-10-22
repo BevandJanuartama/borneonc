@@ -60,6 +60,12 @@ Route::middleware(['auth', '\App\Http\Middleware\CheckLevel:user'])->group(funct
     // Subscription
     Route::get('/subs', [SubscriptionController::class, 'create'])->name('subscription.create');
     Route::post('/subs', [SubscriptionController::class, 'store'])->name('subscription.store');
+    
+    Route::get('/subscriptions/user/json', [SubscriptionController::class, 'userSubscriptionsJson'])
+    ->middleware('auth')
+    ->name('subscription.user.json');
+
+
 
     // Profil
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

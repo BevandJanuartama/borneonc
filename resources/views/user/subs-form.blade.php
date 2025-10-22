@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Form Berlangganan</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body class="bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen">
@@ -42,9 +41,9 @@
               <label class="block text-sm font-medium text-gray-700 mb-2">
                 <i class="fas fa-database mr-2 text-blue-500"></i>Data Center
               </label>
-              <select id="dataCenter" class="w-full border border-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
-                <option value="idc">IDC 3D Jakarta</option>
-                <option value="ncix">NCIX Pekanbaru</option>
+              <select id="dataCenter" name="data_center" class="w-full border border-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                <option value="IDC 3D JAKARTA">IDC 3D Jakarta</option>
+                <option value="NCIX PEKANBARU">NCIX Pekanbaru</option>
               </select>
             </div>
 
@@ -53,16 +52,17 @@
                 <i class="fas fa-globe mr-2 text-blue-500"></i>Subdomain
               </label>
               <div class="flex">
-                <input type="text" id="subdomain" class="border border-gray-200 w-full px-4 py-3 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" placeholder="contohnama" />
+                <input type="text" id="subdomain" name="subdomain_url" class="border border-gray-200 w-full px-4 py-3 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" placeholder="contohnama" />
                 <span class="inline-flex items-center px-4 py-3 border border-l-0 border-gray-200 rounded-r-lg bg-gray-50 text-sm text-gray-600">.bncradius.com</span>
               </div>
+              <p class="text-xs text-gray-500 mt-1">Subdomain harus unik dan belum digunakan</p>
             </div>
 
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-2">
                 <i class="fas fa-box mr-2 text-blue-500"></i>Pilih Paket
               </label>
-              <select id="paket" class="w-full border border-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" onchange="updateHarga()">
+              <select id="paket" name="paket_id" class="w-full border border-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" onchange="updateHarga()">
                 @foreach ($pakets as $paket)
                   <option value="{{ $paket->id }}"
                       data-harga-bulanan="{{ $paket->harga_bulanan }}"
@@ -115,7 +115,7 @@
               <label class="block text-sm font-medium text-gray-700 mb-2">
                 <i class="fas fa-building mr-2 text-indigo-500"></i>Nama Perusahaan
               </label>
-              <input type="text" id="namaPerusahaan" class="w-full border border-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all" placeholder="Masukkan nama perusahaan" />
+              <input type="text" id="namaPerusahaan" name="nama_perusahaan" class="w-full border border-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all" placeholder="Masukkan nama perusahaan" required />
             </div>
 
             <div class="grid md:grid-cols-2 gap-4">
@@ -123,7 +123,7 @@
                 <label class="block text-sm font-medium text-gray-700 mb-2">
                   <i class="fas fa-map-marker-alt mr-2 text-indigo-500"></i>Provinsi
                 </label>
-                <select id="provinsi" onchange="loadKabupaten()" class="w-full border border-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
+                <select id="provinsi" name="provinsi" onchange="loadKabupaten()" class="w-full border border-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all" required>
                   <option value="">Pilih Provinsi</option>
                 </select>
               </div>
@@ -132,7 +132,7 @@
                 <label class="block text-sm font-medium text-gray-700 mb-2">
                   <i class="fas fa-city mr-2 text-indigo-500"></i>Kabupaten/Kota
                 </label>
-                <select id="kabupaten" class="w-full border border-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
+                <select id="kabupaten" name="kabupaten" class="w-full border border-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all" required>
                   <option value="">Pilih Kabupaten/Kota</option>
                 </select>
               </div>
@@ -142,186 +142,170 @@
               <label class="block text-sm font-medium text-gray-700 mb-2">
                 <i class="fas fa-map mr-2 text-indigo-500"></i>Alamat Lengkap
               </label>
-              <textarea id="alamat" class="w-full border border-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all resize-none" rows="3" placeholder="Masukkan alamat lengkap perusahaan"></textarea>
+              <textarea id="alamat" name="alamat" class="w-full border border-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all resize-none" rows="3" placeholder="Masukkan alamat lengkap perusahaan" required></textarea>
             </div>
 
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-2">
                 <i class="fas fa-phone mr-2 text-indigo-500"></i>Nomor Telepon
               </label>
-              <input type="text" class="w-full border border-gray-200 px-4 py-3 rounded-lg bg-gray-50 text-gray-600" value="{{ Auth::user()->telepon }}" readonly />
+              <input type="text" class="w-full border border-gray-200 px-4 py-3 rounded-lg bg-gray-50 cursor-not-allowed" value="{{ Auth::user()->telepon }}" readonly />
             </div>
 
-            <div class="bg-gray-50 p-4 rounded-lg">
-              <label class="flex items-start gap-3 cursor-pointer">
-                <input type="checkbox" id="persetujuan" class="mt-1 w-4 h-4 text-indigo-600 border-2 border-gray-300 rounded focus:ring-indigo-500" />
-                <div class="text-sm text-gray-700">
-                  <strong>Persetujuan Data</strong><br>
-                  Saya menyatakan bahwa data yang saya masukkan sudah benar dan saya setuju dengan syarat & ketentuan yang berlaku.
-                </div>
+            <div>
+              <label class="inline-flex items-center mt-2">
+                <input type="checkbox" id="persetujuan" name="setuju" class="form-checkbox h-5 w-5 text-indigo-600 rounded">
+                <span class="ml-2 text-gray-700">Saya menyetujui syarat dan ketentuan</span>
               </label>
             </div>
           </div>
         </div>
+
       </div>
 
-      <!-- Summary Sidebar -->
-      <div class="lg:col-span-1">
-        <div class="sticky top-8">
-          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-            <div class="bg-gradient-to-r from-green-600 to-emerald-600 p-6">
-              <div class="flex items-center gap-3 text-white">
-                <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
-                  <i class="fas fa-receipt text-lg"></i>
-                </div>
-                <div>
-                  <h3 class="text-xl font-semibold">Ringkasan Order</h3>
-                  <p class="text-green-100 text-sm">Detail pembayaran</p>
-                </div>
-              </div>
+      <!-- SUMMARY -->
+      <div class="space-y-6">
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sticky top-6">
+          <h2 class="text-xl font-semibold mb-4 text-gray-800">Ringkasan Pesanan</h2>
+          
+          <div class="space-y-3 mb-4">
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">Nama Perusahaan:</span>
+              <span id="summaryNama" class="font-medium text-gray-800">-</span>
             </div>
-            
-            <div class="p-6 space-y-4">
-              <div class="text-center">
-                <div id="harga" class="text-3xl font-bold text-gray-800 mb-2">-</div>
-                <div id="hargaPromo" class="space-y-1"></div>
-              </div>
-              
-              <hr class="my-4">
-              
-              <div class="space-y-3 text-sm">
-                <div class="flex justify-between">
-                  <span class="text-gray-600">Data Center:</span>
-                  <span class="font-medium" id="summary-dc">IDC 3D Jakart</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-gray-600">Subdomain:</span>
-                  <span class="font-medium" id="summary-subdomain">-.bncradius.com</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-gray-600">Siklus:</span>
-                  <span class="font-medium" id="summary-siklus">Bulanan</span>
-                </div>
-              </div>
-              
-              <button id="pay-button" type="button" class="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-6 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed">
-                <i class="fas fa-credit-card mr-2"></i>
-                Bayar Sekarang
-              </button>
-              
-              <div class="text-center text-xs text-gray-500 mt-3">
-                <i class="fas fa-shield-alt mr-1"></i>
-                Pembayaran aman dengan enkripsi SSL
-              </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">Paket:</span>
+              <span id="summaryPaket" class="font-medium text-gray-800">-</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">Siklus:</span>
+              <span id="summarySiklus" class="font-medium text-gray-800">Bulanan</span>
             </div>
           </div>
+          
+          <div class="border-t border-gray-200 pt-4 mb-4">
+            <div class="flex justify-between items-center">
+              <span class="text-gray-700 font-semibold">Total Harga:</span>
+              <span id="summaryHarga" class="text-2xl font-bold text-indigo-600">Rp0</span>
+            </div>
+          </div>
+          
+          <button id="submitBtn" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all font-medium shadow-md hover:shadow-lg">
+            <i class="fas fa-paper-plane mr-2"></i>Lanjut Pembayaran
+          </button>
         </div>
       </div>
+
     </div>
   </div>
 
 <script>
-  function getSiklus() {
-    return document.querySelector('input[name="siklus"]:checked').value;
-  }
+  // ===== Dummy Data Provinsi & Kabupaten =====
+  const provinsiList = [
+    {id: 1, name: 'Jawa Barat', kabupaten: ['Bandung', 'Bekasi', 'Bogor', 'Cirebon', 'Depok']},
+    {id: 2, name: 'Jawa Timur', kabupaten: ['Surabaya', 'Malang', 'Kediri', 'Blitar', 'Jember']},
+    {id: 3, name: 'Jawa Tengah', kabupaten: ['Semarang', 'Solo', 'Yogyakarta', 'Magelang', 'Purwokerto']},
+    {id: 4, name: 'DKI Jakarta', kabupaten: ['Jakarta Pusat', 'Jakarta Utara', 'Jakarta Selatan', 'Jakarta Timur', 'Jakarta Barat']}
+  ];
 
-  function updateHarga() {
-    const siklus = getSiklus();
-    const paketSelect = document.getElementById('paket');
-    const selectedOption = paketSelect.options[paketSelect.selectedIndex];
+  const provinsiSelect = document.getElementById('provinsi');
+  const kabupatenSelect = document.getElementById('kabupaten');
 
-    const hargaBulanan = parseInt(selectedOption.dataset.hargaBulanan);
-    const hargaTahunan = parseInt(selectedOption.dataset.hargaTahunan);
-    const harga = siklus === 'tahunan' ? hargaTahunan : hargaBulanan;
-
-    const formatted = new Intl.NumberFormat('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0
-    }).format(harga);
-
-    document.getElementById('harga').textContent = `${formatted}`;
-
-    const hargaPromo = document.getElementById('hargaPromo');
-    if (siklus === 'tahunan') {
-      const coret = hargaBulanan * 12;
-      hargaPromo.innerHTML = `
-        <div class="text-sm text-gray-400 line-through">Rp${coret.toLocaleString('id-ID')}/12 bulan</div>
-        <div class="text-sm text-green-600 font-medium">Anda Hemat Rp${(coret - hargaTahunan).toLocaleString('id-ID')}</div>
-      `;
-      hargaPromo.style.display = 'block';
-    } else {
-      hargaPromo.style.display = 'none';
-    }
-
-    // Update summary
-    updateSummary();
-  }
-
-  function updateSummary() {
-    const siklus = getSiklus();
-    const dataCenter = document.getElementById('dataCenter').value;
-    const subdomain = document.getElementById('subdomain').value || '-';
-
-    document.getElementById('summary-dc').textContent = dataCenter === 'idc' ? 'IDC 3D Jakarta' : 'NCIX Pekanbaru';
-    document.getElementById('summary-subdomain').textContent = `${subdomain}.bncradius.com`;
-    document.getElementById('summary-siklus').textContent = siklus.charAt(0).toUpperCase() + siklus.slice(1);
-  }
-
-  function loadKabupaten() {
-    const provId = document.getElementById('provinsi').value;
-    const kabupatenSelect = document.getElementById('kabupaten');
-    kabupatenSelect.innerHTML = '<option value="">Loading...</option>';
-
-    fetch(`https://www.emsifa.com/api-wilayah-indonesia/api/regencies/${provId}.json`)
-      .then(res => res.json())
-      .then(kabupaten => {
-        kabupatenSelect.innerHTML = '<option value="">Pilih Kabupaten/Kota</option>';
-        kabupaten.forEach(k => {
-          const option = document.createElement('option');
-          option.value = k.name;
-          option.textContent = k.name;
-          kabupatenSelect.appendChild(option);
-        });
-      });
-  }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    updateHarga();
-    
-    // Load provinsi
-    fetch('https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json')
-      .then(res => res.json())
-      .then(provinsi => {
-        const selectProvinsi = document.getElementById('provinsi');
-        provinsi.forEach(p => {
-          const option = document.createElement('option');
-          option.value = p.id;
-          option.textContent = p.name;
-          selectProvinsi.appendChild(option);
-        });
-      });
-
-    // Add event listeners
-    document.getElementById('dataCenter').addEventListener('change', updateSummary);
-    document.getElementById('subdomain').addEventListener('input', updateSummary);
+  // Populate provinsi
+  provinsiList.forEach(p => {
+    const option = document.createElement('option');
+    option.value = p.name;
+    option.textContent = p.name;
+    provinsiSelect.appendChild(option);
   });
 
-  document.getElementById('pay-button').addEventListener('click', function () {
-    const siklus = getSiklus();
+  function loadKabupaten() {
+    const selected = provinsiList.find(p => p.name === provinsiSelect.value);
+    kabupatenSelect.innerHTML = '<option value="">Pilih Kabupaten/Kota</option>';
+    if(selected) {
+      selected.kabupaten.forEach(k => {
+        const option = document.createElement('option');
+        option.value = k;
+        option.textContent = k;
+        kabupatenSelect.appendChild(option);
+      });
+    }
+  }
+
+  // ===== Update Summary =====
+  const paketSelect = document.getElementById('paket');
+  const namaPerusahaanInput = document.getElementById('namaPerusahaan');
+  const siklusRadios = document.querySelectorAll('input[name="siklus"]');
+  const hargaSpan = document.getElementById('summaryHarga');
+  const summaryNama = document.getElementById('summaryNama');
+  const summaryPaket = document.getElementById('summaryPaket');
+  const summarySiklus = document.getElementById('summarySiklus');
+
+  function updateHarga() {
+    const paket = paketSelect.selectedOptions[0];
+    const hargaBulanan = parseInt(paket.dataset.hargaBulanan || 0);
+    const hargaTahunan = parseInt(paket.dataset.hargaTahunan || 0);
+    const siklus = document.querySelector('input[name="siklus"]:checked').value;
+    const harga = siklus === 'tahunan' ? hargaTahunan : hargaBulanan;
+    
+    hargaSpan.textContent = 'Rp' + harga.toLocaleString('id-ID');
+    summaryNama.textContent = namaPerusahaanInput.value || '-';
+    summaryPaket.textContent = paket.textContent.trim();
+    summarySiklus.textContent = siklus.charAt(0).toUpperCase() + siklus.slice(1);
+  }
+
+  namaPerusahaanInput.addEventListener('input', updateHarga);
+  paketSelect.addEventListener('change', updateHarga);
+  siklusRadios.forEach(r => r.addEventListener('change', updateHarga));
+  
+  // Initial update
+  updateHarga();
+
+  // ===== Submit Form =====
+  document.getElementById('submitBtn').addEventListener('click', function() {
+    // Validasi checkbox persetujuan
+    const setuju = document.getElementById('persetujuan').checked;
+    if(!setuju){
+      alert('Anda harus menyetujui syarat dan ketentuan.');
+      return;
+    }
+
+    // Validasi field required
+    const namaPerusahaan = namaPerusahaanInput.value.trim();
+    const subdomain = document.getElementById('subdomain').value.trim();
+    const provinsi = provinsiSelect.value;
+    const kabupaten = kabupatenSelect.value;
+    const alamat = document.getElementById('alamat').value.trim();
+
+    if(!namaPerusahaan || !subdomain || !provinsi || !kabupaten || !alamat) {
+      alert('Mohon lengkapi semua data yang diperlukan.');
+      return;
+    }
+
+    // Hitung harga sesuai siklus
+    const paket = paketSelect.selectedOptions[0];
+    const hargaBulanan = parseFloat(paket.dataset.hargaBulanan || 0);
+    const hargaTahunan = parseFloat(paket.dataset.hargaTahunan || 0);
+    const siklus = document.querySelector('input[name="siklus"]:checked').value;
+    const harga = siklus === 'tahunan' ? hargaTahunan : hargaBulanan;
+
     const data = {
       data_center: document.getElementById('dataCenter').value,
-      subdomain_url: document.getElementById('subdomain').value,
+      subdomain_url: subdomain,
       siklus: siklus,
-      harga: document.getElementById('paket').selectedOptions[0].dataset[`harga${siklus.charAt(0).toUpperCase() + siklus.slice(1)}`],
-      nama_perusahaan: document.getElementById('namaPerusahaan').value,
-      provinsi: document.getElementById('provinsi').selectedOptions[0].text,
-      kabupaten: document.getElementById('kabupaten').value,
-      alamat: document.getElementById('alamat').value,
-      setuju: document.getElementById('persetujuan').checked
+      paket_id: paketSelect.value,
+      harga: harga,
+      nama_perusahaan: namaPerusahaan,
+      provinsi: provinsi,
+      kabupaten: kabupaten,
+      alamat: alamat,
+      setuju: 1
     };
 
-    console.log('Data yang akan dikirim:', data);
+    // Disable button saat proses
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Memproses...';
 
     fetch('/subs', {
       method: 'POST',
@@ -331,36 +315,35 @@
       },
       body: JSON.stringify(data)
     })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Respons dari server:', data);
-      if (data.snapToken) {
-        snap.pay(data.snapToken, {
-          onSuccess: function(result) {
-            window.location.href = '/invoice';
-          },
-          onPending: function(result) {
-            alert('Menunggu pembayaran.');
-          },
-          onError: function(result) {
-            alert('Pembayaran gagal!');
-          },
-          onClose: function() {
-            alert('Anda menutup popup tanpa menyelesaikan pembayaran.');
-          }
-        });
+    .then(res => res.json())
+    .then(res => {
+      if(res.success){
+        alert('Berhasil! Pesanan Anda sedang diproses.');
+        window.location.href = '/invoice'; // Redirect ke halaman daftar subscription
       } else {
-        alert('Gagal mendapatkan token pembayaran.');
+        // Tampilkan error validasi
+        if(res.errors) {
+          let errorMsg = 'Terjadi kesalahan:\n';
+          for(let field in res.errors) {
+            errorMsg += '- ' + res.errors[field].join(', ') + '\n';
+          }
+          alert(errorMsg);
+        } else {
+          alert('Gagal: ' + (res.message || 'Terjadi kesalahan. Silakan coba lagi.'));
+        }
+        
+        // Enable button kembali
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Lanjut Pembayaran';
       }
     })
     .catch(err => {
-      console.error('Terjadi kesalahan:', err);
-      alert('Terjadi kesalahan saat memproses pembayaran.');
+      console.error(err);
+      alert('Terjadi kesalahan saat submit. Silakan coba lagi.');
+      
+      // Enable button kembali
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Lanjut Pembayaran';
     });
   });
 </script>
