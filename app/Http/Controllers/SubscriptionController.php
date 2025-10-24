@@ -110,10 +110,26 @@ class SubscriptionController extends Controller
     }
 
     public function userSubscriptionsJson() {
-        $subs = \App\Models\Subscription::with('paket')
+        $subs = Subscription::with('paket', 'invoice')
                     ->where('user_id', auth()->id())
                     ->get();
-        return response()->json($subs);
+
+        $data = $subs->map(function($sub) {
+            return [
+                'id' => $sub->id,
+                'nama_perusahaan' => $sub->nama_perusahaan,
+                'data_center' => $sub->data_center,
+                'subdomain_url' => $sub->subdomain_url,
+                'siklus' => $sub->siklus,
+                'harga' => $sub->harga,
+                'status' => $sub->status,
+                'nama_paket' => $sub->paket?->nama,
+                'invoice' => $sub->invoice ? ['file_path' => $sub->invoice->file_path] : null,
+                'created_at' => $sub->created_at,
+            ];
+        });
+
+        return response()->json($data);
     }
 
 }

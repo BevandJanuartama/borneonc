@@ -36,4 +36,10 @@ class Subscription extends Model
     {
         return $this->belongsTo(Paket::class);
     }
+
+    public function invoice()
+    {
+        return $this->hasOne(Invoice::class);
+}
+
 }

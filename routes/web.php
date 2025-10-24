@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminSubscriptionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -16,6 +17,7 @@ use App\Http\Controllers\RouterController;
 use App\Http\Controllers\StokVoucherController;
 use App\Models\Info;
 use Illuminate\Http\Request;
+use App\Models\Subscription;
 
 
 /*
@@ -65,6 +67,8 @@ Route::middleware(['auth', '\App\Http\Middleware\CheckLevel:user'])->group(funct
     ->middleware('auth')
     ->name('subscription.user.json');
 
+    
+
 
 
     // Profil
@@ -75,10 +79,20 @@ Route::middleware(['auth', '\App\Http\Middleware\CheckLevel:user'])->group(funct
 
 
 // ===================== ROUTE UNTUK ADMIN ===================== //
+
 Route::middleware(['auth', CheckLevel::class . ':admin'])->group(function () {
 
-    // Dashboard Admin
-    Route::get('/admin/dashboard', fn () => view('admin.dashboard'))->name('admin.dashboard');
+    // ===== Dashboard Admin (Daftar Subscription) =====
+    Route::get('/admin/dashboard', [AdminSubscriptionController::class, 'index'])
+        ->name('admin.dashboard');
+
+    // ===== Update Status Subscription =====
+    Route::put('/admin/subscription/{id}/update-status', [AdminSubscriptionController::class, 'updateStatus'])
+        ->name('admin.subscription.updateStatus');
+
+    // ===== Hapus Subscription =====
+    Route::delete('/admin/subscription/{id}', [AdminSubscriptionController::class, 'destroy'])
+        ->name('admin.subscription.destroy');
 
     // ===== CRUD PAKET =====
     Route::get('/admin/paket/index', [PaketController::class, 'index'])->name('paket.index');
@@ -88,6 +102,8 @@ Route::middleware(['auth', CheckLevel::class . ':admin'])->group(function () {
     Route::put('/admin/paket/{id}', [PaketController::class, 'update'])->name('paket.update');
     Route::delete('/admin/paket/{id}', [PaketController::class, 'destroy'])->name('paket.destroy');
 });
+
+
 
 
 // ===================== ROUTE UNTUK RESELLER ===================== //
